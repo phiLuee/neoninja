@@ -1,0 +1,99 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+.container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  animation: float 3s ease-in-out infinite;
+}
+
+.triangle1 {
+  border-width: 0 150px 150px 0;
+  border-color: transparent #3498db transparent transparent;
+  transform-origin: bottom right;
+}
+
+.triangle2 {
+  border-width: 150px 0 0 150px;
+  border-color: transparent transparent transparent #e74c3c;
+  transform-origin: bottom left;
+}
+
+.triangle3 {
+  border-width: 150px 150px 0 0;
+  border-color: #2ecc71 transparent transparent transparent;
+  transform-origin: top right;
+}
+
+.triangle4 {
+  border-width: 0 0 150px 150px;
+  border-color: transparent transparent #f1c40f transparent;
+  transform-origin: top left;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
