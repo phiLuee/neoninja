@@ -1,5 +1,5 @@
 import React from 'react';
-import './Card.scss';
+import './Button.scss';
 
 interface ButtonProps {
     onClick: () => void;
