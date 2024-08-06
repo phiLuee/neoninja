@@ -1,12 +1,7 @@
 declare module 'navbar-component' {
-    import { FC, ReactNode } from 'react';
+    import { FC } from 'react';
   
-    interface NavbarProps {
-      onClick: () => void;
-      children: ReactNode;
-    }
-  
-    const Navbar: FC<NavbarProps>;
+    const Navbar: FC;
   
     export default Navbar;
   }
