@@ -2,14 +2,17 @@
   "name": "neoninja",
   "version": "0.0.0",
   "type": "module",
-  "main": "src/index.js",
+  "main": "dist/neoninja.es.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "clean": "rm -rf dist && rm -rf node_modules/.tmp",
+    "build": "tsc --p ./tsconfig.lib.json && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "postbuild": "echo 'Build completed'"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -18,15 +21,6 @@
     "react-router-dom": "^6.26.0"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^1.6.1",
-    "@storybook/addon-essentials": "^8.2.7",
-    "@storybook/addon-interactions": "^8.2.7",
-    "@storybook/addon-links": "^8.2.7",
-    "@storybook/addon-onboarding": "^8.2.7",
-    "@storybook/blocks": "^8.2.7",
-    "@storybook/react": "^8.2.7",
-    "@storybook/react-vite": "^8.2.7",
-    "@storybook/test": "^8.2.7",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
@@ -39,9 +33,9 @@
     "eslint-plugin-storybook": "^0.8.0",
     "postcss": "^8.4.40",
     "sass": "^1.77.8",
-    "storybook": "^8.2.7",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.2.2",
-    "vite": "^5.3.4"
+    "vite": "^5.3.4",
+    "vite-plugin-dts": "^4.0.1"
   }
 }
