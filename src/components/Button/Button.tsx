@@ -5,7 +5,7 @@ import { ButtonProps } from './Button.d';
 
 
 
-const Button: React.FC<ButtonProps> = ({ variant = 'primary', size = 'medium', onClick, children }) => {
+export const Button: React.FC<ButtonProps> = ({ variant = 'primary', size = 'medium', onClick, children }) => {
     const baseStyles = "button p-4 m-5 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300";
     const variantStyles = {
         primary: 'bg-blue-500 hover:bg-blue-700 text-white',

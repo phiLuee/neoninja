@@ -10,7 +10,5 @@ export interface ButtonProps {
   children: ReactNode;
 }
 
-declare module 'button-component' {
-  const Button: FC<ButtonProps>;
-  export default Button;
-}
+export const Button: FC<ButtonProps>;
+export default Button;

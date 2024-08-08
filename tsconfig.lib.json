@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
+    "rootDir": "src",
     "declaration": true,
     "declarationMap": true,
     "composite": true,
@@ -11,6 +12,8 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -29,6 +32,6 @@
     "forceConsistentCasingInFileNames": true
   },
   "extends": "./tsconfig.json",
-  "include": ["src/components"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }
