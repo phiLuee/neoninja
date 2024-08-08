@@ -3,8 +3,6 @@ import clsx from 'clsx';
 import './Button.scss';
 import { ButtonProps } from './Button.d';
 
-
-
 export const Button: React.FC<ButtonProps> = ({ variant = 'primary', size = 'medium', onClick, children }) => {
     const baseStyles = "button p-4 m-5 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300";
     const variantStyles = {
