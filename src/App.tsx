@@ -1,5 +1,5 @@
 // src/App.tsx
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -9,16 +9,17 @@ import Offcanvas from "./components/Offcanvas/Offcanvas";
 import Button from "./components/Button/Button";
 
 const App: React.FC = () => {
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+
   const drawerToggle = () => {
-    const drawer = document.getElementById("drawer-example");
-    if (drawer) {
-      drawer.classList.toggle("-translate-x-full");
-    }
+    setShowOffcanvas(!showOffcanvas);
   };
 
   return (
     <Router>
-      <Offcanvas></Offcanvas>
+      <Offcanvas placement="left" show={showOffcanvas}>
+        <p>Menu</p>
+      </Offcanvas>
       <Navbar />
       <Button onClick={drawerToggle}>
         <p>Open</p>
