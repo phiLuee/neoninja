@@ -1,11 +1,12 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode } from "react";
 
-export type Variant = 'primary' | 'secondary';
-export type Size = 'small' | 'medium' | 'large';
+export type Variant = "primary" | "secondary";
+export type Size = "small" | "medium" | "large";
 
 export interface ButtonProps {
   variant?: Variant;
   size?: Size;
+  glass?: boolean;
   onClick: () => void;
   children: ReactNode;
 }

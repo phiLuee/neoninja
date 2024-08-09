@@ -11,12 +11,14 @@ const App: React.FC = () => {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/components" element={<Components />} />
-        <Route path="/components/buttons" element={<Buttons />} />
-      </Routes>
+      <div className="max-w-screen-xl p-5 mx-auto">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/components" element={<Components />} />
+          <Route path="/components/buttons" element={<Buttons />} />
+        </Routes>
+      </div>
     </Router>
   );
 };

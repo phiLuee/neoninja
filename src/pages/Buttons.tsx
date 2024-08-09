@@ -47,7 +47,8 @@ function Buttons() {
           {" "}
           Primary Button Large{" "}
         </Button>
-
+      </div>
+      <div>
         <Button
           variant="secondary"
           onClick={function (): void {
@@ -56,6 +57,36 @@ function Buttons() {
         >
           {" "}
           Secondary Button{" "}
+        </Button>
+        <Button
+          variant="secondary"
+          size="small"
+          onClick={function (): void {
+            alert("Click!");
+          }}
+        >
+          {" "}
+          Secondary Button small{" "}
+        </Button>
+        <Button
+          variant="secondary"
+          size="medium"
+          onClick={function (): void {
+            alert("Click!");
+          }}
+        >
+          {" "}
+          Secondary Button medium{" "}
+        </Button>
+        <Button
+          variant="secondary"
+          size="large"
+          onClick={function (): void {
+            alert("Click!");
+          }}
+        >
+          {" "}
+          Secondary Button large{" "}
         </Button>
       </div>
     </>
