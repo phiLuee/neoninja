@@ -6,11 +6,14 @@ import About from "./pages/About";
 import Navbar from "./components/Navbar/Navbar";
 import Components from "./pages/Components";
 import Buttons from "./pages/Buttons";
+import { ThemeProvider } from "./context/ThemeContext";
 
 const App: React.FC = () => {
   return (
     <Router>
-      <Navbar />
+      <ThemeProvider>
+        <Navbar />
+      </ThemeProvider>
       <div className="max-w-screen-xl p-5 mx-auto">
         <Routes>
           <Route path="/" element={<Home />} />
