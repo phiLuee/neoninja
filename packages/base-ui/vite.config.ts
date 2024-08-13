@@ -4,12 +4,11 @@ import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import tailwindcss from "tailwindcss";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     dts({
-      tsconfigPath: "./tsconfig.lib.json",
+      tsconfigPath: "./tsconfig.json",
       include: ["src/components/**/*"],
       insertTypesEntry: true,
       cleanVueFileName: false,
@@ -20,7 +19,7 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, "src/components/index.ts"),
+      entry: resolve(__dirname, "src/index.ts"),
       name: "NeoNinja",
       formats: ["es", "cjs", "umd"],
       fileName: (format) => `neoninja.${format}.js`,

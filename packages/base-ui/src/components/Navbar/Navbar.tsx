@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import Button from "../Button/Button";
 import Offcanvas from "../Offcanvas/Offcanvas";
 import "./Navbar.scss";
-import { useTheme } from "../../utils/themeUtils";
 
 const Navbar: React.FC = () => {
   const [showOffcanvas, setShowOffcanvas] = useState(false);
@@ -11,8 +10,6 @@ const Navbar: React.FC = () => {
   const drawerToggle = () => {
     setShowOffcanvas(!showOffcanvas);
   };
-
-  const { toggleTheme } = useTheme();
 
   return (
     <nav className="bar bg-white border-gray-200 dark:bg-gray-900">
@@ -73,7 +70,6 @@ const Navbar: React.FC = () => {
                   />
                 </svg>
               </Button>
-              <Button onClick={toggleTheme}>Theme</Button>
             </li>
           </ul>
         </div>

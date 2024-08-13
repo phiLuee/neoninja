@@ -1,4 +1,4 @@
-import Button from "../components/Button/Button";
+import Button from "base-ui/src/components/Button/Button";
 
 function Buttons() {
   return (

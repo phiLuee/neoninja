@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "base-ui/src/components/Navbar/Navbar";
 import Components from "./pages/Components";
 import Buttons from "./pages/Buttons";
 import { ThemeProvider } from "./context/ThemeContext";
