@@ -1,9 +1,8 @@
 import { defineConfig } from "vite";
-import { resolve } from "path";
+import path from "path";
 import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import tailwindcss from "tailwindcss";
-import path from "path";
 
 export default defineConfig({
   plugins: [
@@ -20,7 +19,7 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, "src/index.ts"),
+      entry: path.resolve(__dirname, "src/index.ts"),
       name: "NeoNinja",
       formats: ["es", "cjs", "umd"],
       fileName: (format) => `neoninja.${format}.js`,
@@ -36,7 +35,7 @@ export default defineConfig({
       },
     },
     sourcemap: true,
-    emptyOutDir: true,
+    emptyOutDir: false,
     copyPublicDir: false,
   },
   css: {
