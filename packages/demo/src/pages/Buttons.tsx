@@ -1,4 +1,4 @@
-import Button from "base-ui/src/components/Button/Button";
+import { Button } from "base-ui";
 
 function Buttons() {
   return (
@@ -6,10 +6,10 @@ function Buttons() {
       <div>
         <h1>Buttons</h1>
         <Button
-          variant="primary"
           onClick={function (): void {
             alert("Click!");
           }}
+          variant="primary"
         >
           {" "}
           Primary Button{" "}

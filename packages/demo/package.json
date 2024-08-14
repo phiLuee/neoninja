@@ -1,9 +1,11 @@
 {
-  "name": "neoninja-ui-demo",
+  "name": "demo",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "build": "vite build",
+    "clean": "rm -rf dist && rm -rf node_modules/.tmp"
   },
   "dependencies": {
     "react": "^18.3.1",

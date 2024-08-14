@@ -3,13 +3,14 @@ import { resolve } from "path";
 import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import tailwindcss from "tailwindcss";
+import path from "path";
 
 export default defineConfig({
   plugins: [
     react(),
     dts({
       tsconfigPath: "./tsconfig.json",
-      include: ["src/components/**/*"],
+      include: ["src/**/*"],
       insertTypesEntry: true,
       cleanVueFileName: false,
       copyDtsFiles: true,

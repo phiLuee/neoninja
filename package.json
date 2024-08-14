@@ -6,8 +6,15 @@
   ],
   "type": "module",
   "scripts": {
-    "dev": "npm run dev --workspaces",
-    "build": "npm run dev --workspaces",
+    "dev": "npm run clean && npm run concurrently",
+    "concurrently": "concurrently \"npm run dev:base-ui\" \"npm run dev:demo\"",
+    "dev:base-ui": "npm run dev --workspace=base-ui",
+    "dev:demo": "wait-on packages/base-ui/dist && npm run dev --workspace=demo",
+    "build": "npm run build --workspaces",
     "clean": "npm run clean --workspaces"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0",
+    "wait-on": "^7.2.0"
   }
 }

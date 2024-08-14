@@ -3,7 +3,7 @@ import { OffcanvasProps } from "./Offcanvas.d";
 import "./Offcanvas.scss";
 import clsx from "clsx";
 
-const Offcanvas: React.FC<OffcanvasProps> = ({
+export const Offcanvas: React.FC<OffcanvasProps> = ({
   children,
   placement = "right",
   show = false,

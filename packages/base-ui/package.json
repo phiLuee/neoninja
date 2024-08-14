@@ -11,7 +11,7 @@
     "dist"
   ],
   "scripts": {
-    "dev": "vite build --mode development",
+    "dev": "vite build --mode development --watch",
     "clean": "rm -rf dist && rm -rf node_modules/.tmp",
     "build": "vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
