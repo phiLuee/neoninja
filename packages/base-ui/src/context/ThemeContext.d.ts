@@ -19,5 +19,9 @@ export interface ThemeContextProps {
   toggleTheme: () => void;
 }
 
+export interface ThemeProviderProps {
+  children: ReactNode;
+}
+
 export const ThemeContext: Context<ThemeContextProps | undefined>;
-export const ThemeProvider: FC<{ children: ReactNode }>;
+export const ThemeProvider: FC<ThemeProviderProps>;

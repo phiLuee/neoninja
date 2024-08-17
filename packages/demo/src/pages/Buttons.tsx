@@ -1,4 +1,4 @@
-import { Button } from "base-ui";
+import { Button, Card } from "base-ui";
 
 function Buttons() {
   return (
@@ -88,6 +88,15 @@ function Buttons() {
           {" "}
           Secondary Button large{" "}
         </Button>
+      </div>
+      <div>
+        <Card
+          onClick={function (): void {
+            throw new Error("Function not implemented.");
+          }}
+        >
+          <p>Yes</p>
+        </Card>
       </div>
     </>
   );

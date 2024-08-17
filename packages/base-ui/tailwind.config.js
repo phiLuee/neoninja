@@ -1,9 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.ts", "./src/**/*.{js,ts,jsx,tsx}"],
-  darkMode: "class",
+  darkMode: "selector",
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: "rgba(var(--primary))",
+        },
+        secondary: {
+          DEFAULT: "rgba(var(--secondary))",
+        },
+      },
+    },
   },
   plugins: [
     function ({ addBase, theme }) {

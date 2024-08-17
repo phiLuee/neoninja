@@ -11,10 +11,10 @@ export const Button: React.FC<ButtonProps> = ({
   children,
 }) => {
   const baseStyles =
-    "button shadow-lg hover:shadow-xl transition-shadow duration-300";
+    "button dark:text-white shadow-lg hover:shadow-xl transition-shadow duration-300";
   const variantStyles = {
-    primary: "bg-blue-500 hover:bg-blue-700 text-white",
-    secondary: "bg-gray-500 hover:bg-gray-700 text-white",
+    primary: "button-primary",
+    secondary: "button-secondary",
   };
   const glassStyle = {
     glass: "backdrop-filter backdrop-blur-lg bg-opacity-30",
