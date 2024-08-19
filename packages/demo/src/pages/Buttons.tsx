@@ -7,7 +7,7 @@ function Buttons() {
         <h1>Buttons</h1>
         <Button
           onClick={function (): void {
-            alert("Click!");
+            throw new Error("Function not implemented.");
           }}
           variant="primary"
         >
@@ -19,7 +19,7 @@ function Buttons() {
           variant="primary"
           size="small"
           onClick={function (): void {
-            alert("Click!");
+            throw new Error("Function not implemented.");
           }}
         >
           {" "}
@@ -30,7 +30,7 @@ function Buttons() {
           variant="primary"
           size="medium"
           onClick={function (): void {
-            alert("Click!");
+            throw new Error("Function not implemented.");
           }}
         >
           {" "}
@@ -41,7 +41,7 @@ function Buttons() {
           variant="primary"
           size="large"
           onClick={function (): void {
-            alert("Click!");
+            throw new Error("Function not implemented.");
           }}
         >
           {" "}
@@ -52,7 +52,7 @@ function Buttons() {
         <Button
           variant="secondary"
           onClick={function (): void {
-            alert("Click!");
+            throw new Error("Function not implemented.");
           }}
         >
           {" "}
@@ -62,7 +62,7 @@ function Buttons() {
           variant="secondary"
           size="small"
           onClick={function (): void {
-            alert("Click!");
+            throw new Error("Function not implemented.");
           }}
         >
           {" "}
@@ -72,7 +72,7 @@ function Buttons() {
           variant="secondary"
           size="medium"
           onClick={function (): void {
-            alert("Click!");
+            throw new Error("Function not implemented.");
           }}
         >
           {" "}
@@ -82,7 +82,7 @@ function Buttons() {
           variant="secondary"
           size="large"
           onClick={function (): void {
-            alert("Click!");
+            throw new Error("Function not implemented.");
           }}
         >
           {" "}

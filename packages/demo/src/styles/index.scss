@@ -1,8 +1,19 @@
 @import "base-ui";
+@import "tailwindcss/base";
+@import "tailwindcss/utilities";
 
 :root {
   font-family: "Poppins", sans-serif;
   background-color: black;
+  background-image: url("../assets/background.light.jpg");
+  background-position: bottom left;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: white;
-  background-image: url("https://cdn1.epicgames.com/ue/product/Screenshot/1-1920x1080-e59bd1f66ecb965565929da3238b3cda.png");
+  transition: background-image 0.5s ease-in-out;
+}
+
+html:has(body.dark) {
+  background-image: url("../assets/background.dark.jpg");
 }

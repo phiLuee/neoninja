@@ -23,18 +23,16 @@ const App: React.FC = () => {
   return (
     <Router>
       <Navbar>
-        <a href="/" className="flex items-center ">
+        <a href="/" className="flex items-center">
           <img
             src="https://flowbite.com/docs/images/logo.svg"
-            className="h-8"
+            className="m-1"
             alt="Logo"
           />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            NeoNinja
-          </span>
+          <span className="text-black dark:text-white">NeoNinja</span>
         </a>
         <div className="hidden w-full md:block md:w-auto">
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="flex flex-row items-center">
             <li>
               <NavLink
                 to="/"
@@ -76,7 +74,41 @@ const App: React.FC = () => {
                   />
                 </svg>
               </Button>
-              <Button onClick={toggleTheme}>{theme}</Button>
+            </li>
+            <li>
+              <Button size="small" onClick={toggleTheme}>
+                {theme === "light" ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+                    />
+                  </svg>
+                )}
+              </Button>
             </li>
           </ul>
         </div>
@@ -84,6 +116,40 @@ const App: React.FC = () => {
 
       <Offcanvas show={showOffcanvas} placement="left">
         <p>Menu</p>
+        <ul>
+          <li className="p-4 ">
+            <NavLink
+              to="/"
+              className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white active:text-blue-700"
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/components"
+              className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white"
+            >
+              Components
+            </NavLink>
+            <li>
+              <NavLink
+                to="/components/buttons"
+                className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white"
+              >
+                Buttons
+              </NavLink>
+            </li>
+          </li>
+          <li>
+            <NavLink
+              to="/about"
+              className="block py-2 px-3 text-gray-900  md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white"
+            >
+              About
+            </NavLink>
+          </li>
+        </ul>
       </Offcanvas>
 
       <div className="max-w-screen-xl p-5 mx-auto">
