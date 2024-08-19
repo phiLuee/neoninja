@@ -6,13 +6,14 @@ function Buttons() {
       <div>
         <h1>Buttons</h1>
         <Button
+          size="xsmall"
           onClick={function (): void {
             throw new Error("Function not implemented.");
           }}
           variant="primary"
         >
           {" "}
-          Primary Button{" "}
+          Primary Button Extra Small{" "}
         </Button>
 
         <Button
@@ -47,10 +48,22 @@ function Buttons() {
           {" "}
           Primary Button Large{" "}
         </Button>
+
+        <Button
+          variant="primary"
+          size="xlarge"
+          onClick={function (): void {
+            throw new Error("Function not implemented.");
+          }}
+        >
+          {" "}
+          Primary Button XLarge{" "}
+        </Button>
       </div>
       <div>
         <Button
           variant="secondary"
+          size="xsmall"
           onClick={function (): void {
             throw new Error("Function not implemented.");
           }}
@@ -87,6 +100,16 @@ function Buttons() {
         >
           {" "}
           Secondary Button large{" "}
+        </Button>
+        <Button
+          variant="secondary"
+          size="xlarge"
+          onClick={function (): void {
+            throw new Error("Function not implemented.");
+          }}
+        >
+          {" "}
+          Primary Button XLarge{" "}
         </Button>
       </div>
       <div>

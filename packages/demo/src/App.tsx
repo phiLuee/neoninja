@@ -33,7 +33,7 @@ const App: React.FC = () => {
         </a>
         <div className="hidden w-full md:block md:w-auto">
           <ul className="flex flex-row items-center">
-            <li>
+            <li className="px-2">
               <NavLink
                 to="/"
                 className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white active:text-blue-700"
@@ -41,7 +41,7 @@ const App: React.FC = () => {
                 Home
               </NavLink>
             </li>
-            <li>
+            <li className="px-2">
               <NavLink
                 to="/components"
                 className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white"
@@ -49,7 +49,7 @@ const App: React.FC = () => {
                 Components
               </NavLink>
             </li>
-            <li>
+            <li className="px-2">
               <NavLink
                 to="/about"
                 className="block py-2 px-3 text-gray-900  md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white"
@@ -57,15 +57,15 @@ const App: React.FC = () => {
                 About
               </NavLink>
             </li>
-            <li>
-              <Button size="small" onClick={drawerToggle}>
+            <li className="px-2">
+              <Button size="xsmall" onClick={drawerToggle}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="size-6"
+                  className="size-4"
                 >
                   <path
                     strokeLinecap="round"
@@ -75,8 +75,8 @@ const App: React.FC = () => {
                 </svg>
               </Button>
             </li>
-            <li>
-              <Button size="small" onClick={toggleTheme}>
+            <li className="px-2">
+              <Button size="xsmall" onClick={toggleTheme}>
                 {theme === "light" ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +84,7 @@ const App: React.FC = () => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="size-6"
+                    className="size-4"
                   >
                     <path
                       strokeLinecap="round"
@@ -99,7 +99,7 @@ const App: React.FC = () => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="size-6"
+                    className="size-4"
                   >
                     <path
                       strokeLinecap="round"
@@ -117,7 +117,7 @@ const App: React.FC = () => {
       <Offcanvas show={showOffcanvas} placement="left">
         <p>Menu</p>
         <ul>
-          <li className="p-4 ">
+          <li className="p-2">
             <NavLink
               to="/"
               className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white active:text-blue-700"
@@ -125,23 +125,25 @@ const App: React.FC = () => {
               Home
             </NavLink>
           </li>
-          <li>
+          <li className="p-2">
             <NavLink
               to="/components"
               className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white"
             >
               Components
             </NavLink>
-            <li>
-              <NavLink
-                to="/components/buttons"
-                className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white"
-              >
-                Buttons
-              </NavLink>
-            </li>
+            <ul>
+              <li className="p-2">
+                <NavLink
+                  to="/components/buttons"
+                  className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white"
+                >
+                  Buttons
+                </NavLink>
+              </li>
+            </ul>
           </li>
-          <li>
+          <li className="p-2">
             <NavLink
               to="/about"
               className="block py-2 px-3 text-gray-900  md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white"
@@ -152,7 +154,7 @@ const App: React.FC = () => {
         </ul>
       </Offcanvas>
 
-      <div className="max-w-screen-xl p-5 mx-auto">
+      <div className="max-w-screen-xl py-5 px-2 mx-auto">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

@@ -20,9 +20,11 @@ export const Button: React.FC<ButtonProps> = ({
     glass: "backdrop-filter backdrop-blur-lg bg-opacity-30",
   };
   const sizeStyles = {
+    xsmall: "text-xs p-2 ",
     small: "text-sm p-2",
-    medium: "text-base p-3",
-    large: "text-xl p-4",
+    medium: "text-base p-2",
+    large: "text-lg p-2",
+    xlarge: "text-xl p-2",
   };
 
   const classes = clsx(
