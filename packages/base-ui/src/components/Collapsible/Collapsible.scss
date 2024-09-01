@@ -1,0 +1,22 @@
+.collapsible {
+  .collapsible__toggle {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 16px;
+    text-align: left;
+    width: 100%;
+  }
+
+  .collapsible__content {
+    overflow: hidden;
+    height: 0;
+    transition:
+      max-height 0.3s ease,
+      height 0.3s ease;
+
+    &.open {
+      height: auto;
+    }
+  }
+}
