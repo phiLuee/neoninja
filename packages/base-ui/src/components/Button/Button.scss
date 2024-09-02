@@ -53,3 +53,10 @@
     transform: translateY(-3px);
   }
 }
+
+.button-no-flex {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  height: auto;
+}

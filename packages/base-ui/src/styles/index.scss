@@ -2,6 +2,10 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+:root {
+  --font-color: var(--color-gray-800);
+}
+
 .light {
   --primary: 255, 255, 255;
   --secondary: 0, 0, 0;
@@ -12,7 +16,12 @@
   --neon-05: 18, 16, 217;
 }
 
-.dark {
+body * {
+  color: var(--font-color); /* Anwenden der Schriftfarbe auf alle Elemente */
+}
+
+body.dark * {
+  --font-color: var(--color-gray-300);
   --primary: 0, 0, 0;
   --secondary: 255, 255, 255;
 }

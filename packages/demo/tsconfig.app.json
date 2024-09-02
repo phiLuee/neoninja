@@ -26,6 +26,6 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"],
+  "include": ["src", "../base-ui/src/components/Collapsible"],
   "exclude": ["node_modules", "dist"]
 }

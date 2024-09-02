@@ -1,0 +1,72 @@
+.lampContainer {
+  max-width: 200px;
+  position: relative; /* Ändere von absolute zu relative */
+  transform: translate(10px, 10px);
+
+  margin: 0;
+}
+
+.dark .lampContainer::before {
+  z-index: 1;
+  animation: dim-light 5s infinite alternate;
+  content: "";
+  position: absolute;
+  height: 70%;
+  width: 80%;
+  margin: 0 auto;
+  top: 10%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 100%;
+  background: radial-gradient(ellipse at center, #ffe34a 10%, transparent 60%);
+  mix-blend-mode: overlay;
+}
+
+@keyframes dim-light {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  20% {
+    opacity: 0.3;
+  }
+  23% {
+    opacity: 0.4;
+  }
+  26% {
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 0.6;
+  }
+  40% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes flicker-light {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  20% {
+    opacity: 0.3;
+  }
+  23% {
+    opacity: 0.4;
+  }
+  26% {
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 0.6;
+  }
+  40% {
+    opacity: 0.4;
+  }
+}

@@ -11,9 +11,15 @@ import About from "./pages/About";
 import { Navbar, Button, Offcanvas, useTheme } from "base-ui";
 import Components from "./pages/Components";
 import Buttons from "./pages/Buttons";
+import Ninja from "./components/Ninja";
+import MenuList from "./components/MenuList/MenuList"; // Ensure this path is correct or update it to the correct path
+import MenuItem from "./components/MenuItem/MenuItem";
+import { Collapsible } from "base-ui";
+import Menu from "./parts/Menu";
 
 const App: React.FC = () => {
   const [showOffcanvas, setShowOffcanvas] = useState(false);
+
   const { theme, toggleTheme } = useTheme();
 
   const drawerToggle = () => {
@@ -31,8 +37,8 @@ const App: React.FC = () => {
           />
           <span className="text-black dark:text-white">NeoNinja</span>
         </a>
-        <div className="hidden w-full md:block md:w-auto">
-          <ul className="flex flex-row items-center">
+        <div className="flex flex-row justify-end w-full md:w-auto">
+          <ul className="menu-list flex flex-row items-center">
             <li className="px-2">
               <NavLink
                 to="/"
@@ -41,13 +47,31 @@ const App: React.FC = () => {
                 Home
               </NavLink>
             </li>
-            <li className="px-2">
-              <NavLink
-                to="/components"
-                className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white"
-              >
-                Components
-              </NavLink>
+            <li className="px-2 nav-item">
+              <MenuItem label="Components">
+                <ul className="">
+                  <li className="px-2">
+                    <NavLink
+                      to="/components/buttons"
+                      className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:text-white"
+                    >
+                      Buttons
+                    </NavLink>
+                    <NavLink
+                      to="/components/buttons"
+                      className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:text-white"
+                    >
+                      Buttons
+                    </NavLink>
+                    <NavLink
+                      to="/components/buttons"
+                      className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:text-white"
+                    >
+                      Buttons
+                    </NavLink>
+                  </li>
+                </ul>
+              </MenuItem>
             </li>
             <li className="px-2">
               <NavLink
@@ -57,24 +81,8 @@ const App: React.FC = () => {
                 About
               </NavLink>
             </li>
-            <li className="px-2">
-              <Button size="xsmall" onClick={drawerToggle}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-4"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                  />
-                </svg>
-              </Button>
-            </li>
+          </ul>
+          <ul className="flex flex-row items-center">
             <li className="px-2">
               <Button size="xsmall" onClick={toggleTheme}>
                 {theme === "light" ? (
@@ -110,51 +118,33 @@ const App: React.FC = () => {
                 )}
               </Button>
             </li>
+            <li className="px-2">
+              <Button size="xsmall" onClick={drawerToggle}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
+              </Button>
+            </li>
           </ul>
         </div>
       </Navbar>
 
       <Offcanvas show={showOffcanvas} placement="left">
-        <p>Menu</p>
-        <ul>
-          <li className="p-2">
-            <NavLink
-              to="/"
-              className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white active:text-blue-700"
-            >
-              Home
-            </NavLink>
-          </li>
-          <li className="p-2">
-            <NavLink
-              to="/components"
-              className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white"
-            >
-              Components
-            </NavLink>
-            <ul>
-              <li className="p-2">
-                <NavLink
-                  to="/components/buttons"
-                  className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white"
-                >
-                  Buttons
-                </NavLink>
-              </li>
-            </ul>
-          </li>
-          <li className="p-2">
-            <NavLink
-              to="/about"
-              className="block py-2 px-3 text-gray-900  md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white"
-            >
-              About
-            </NavLink>
-          </li>
-        </ul>
+        <Menu></Menu>
       </Offcanvas>
 
-      <div className="max-w-screen-xl py-5 px-2 mx-auto">
+      <div className="max-w-screen-xl mx-auto">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

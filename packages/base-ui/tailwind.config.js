@@ -2,18 +2,6 @@
 export default {
   content: ["./index.ts", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "selector",
-  theme: {
-    extend: {
-      colors: {
-        primary: {
-          DEFAULT: "rgba(var(--primary))",
-        },
-        secondary: {
-          DEFAULT: "rgba(var(--secondary))",
-        },
-      },
-    },
-  },
   plugins: [
     function ({ addBase, theme }) {
       const colors = theme("colors");

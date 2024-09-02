@@ -2,13 +2,6 @@
 @import "tailwindcss/base";
 @import "tailwindcss/utilities";
 
-* {
-  transition:
-    background-image 0.5s ease-in-out,
-    color 0.5s ease-in-out,
-    background-color 0.5s ease-in-out;
-}
-
 :root {
   font-family: "Poppins", sans-serif;
   background-color: black;
@@ -17,7 +10,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: white;
 }
 
 html:has(body.dark) {

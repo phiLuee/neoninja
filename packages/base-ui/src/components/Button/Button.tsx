@@ -11,7 +11,7 @@ export const Button: React.FC<ButtonProps> = ({
   children,
 }) => {
   const baseStyles =
-    "button dark:text-white shadow-lg hover:shadow-xl transition-shadow duration-300";
+    "button dark:text-white shadow-lg hover:shadow-xl transition-shadow duration-300 p-2 ";
   const variantStyles = {
     primary: "button-primary",
     secondary: "button-secondary",
@@ -20,18 +20,19 @@ export const Button: React.FC<ButtonProps> = ({
     glass: "backdrop-filter backdrop-blur-lg bg-opacity-30",
   };
   const sizeStyles = {
-    xsmall: "text-xs p-2 ",
-    small: "text-sm p-2",
-    medium: "text-base p-2",
-    large: "text-lg p-2",
-    xlarge: "text-xl p-2",
+    xsmall: "text-xs",
+    small: "text-sm",
+    medium: "text-base",
+    large: "text-lg",
+    xlarge: "text-xl",
   };
 
   const classes = clsx(
     baseStyles,
     variantStyles[variant],
     sizeStyles[size],
-    theme ? glassStyle.glass : {}
+    theme ? glassStyle.glass : {},
+    "button-no-flex"
   );
   return (
     <button className={classes} onClick={onClick}>

@@ -1,64 +1,69 @@
 import { Button, Card } from "base-ui";
+import Lamp from "../components/Lamp";
 
 function Buttons() {
+  const buttonContainerStyle: React.CSSProperties = {};
+
   return (
     <>
       <div>
         <h1>Buttons</h1>
-        <Button
-          size="xsmall"
-          onClick={function (): void {
-            throw new Error("Function not implemented.");
-          }}
-          variant="primary"
-        >
-          {" "}
-          Primary Button Extra Small{" "}
-        </Button>
+        <div style={buttonContainerStyle}>
+          <Button
+            size="xsmall"
+            onClick={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+            variant="primary"
+          >
+            {" "}
+            Primary Button Extra Small{" "}
+          </Button>
 
-        <Button
-          variant="primary"
-          size="small"
-          onClick={function (): void {
-            throw new Error("Function not implemented.");
-          }}
-        >
-          {" "}
-          Primary Button Small{" "}
-        </Button>
+          <Button
+            variant="primary"
+            size="small"
+            onClick={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          >
+            {" "}
+            Primary Button Small{" "}
+          </Button>
 
-        <Button
-          variant="primary"
-          size="medium"
-          onClick={function (): void {
-            throw new Error("Function not implemented.");
-          }}
-        >
-          {" "}
-          Primary Button Medium{" "}
-        </Button>
+          <Button
+            variant="primary"
+            size="medium"
+            onClick={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          >
+            {" "}
+            Primary Button Medium{" "}
+          </Button>
 
-        <Button
-          variant="primary"
-          size="large"
-          onClick={function (): void {
-            throw new Error("Function not implemented.");
-          }}
-        >
-          {" "}
-          Primary Button Large{" "}
-        </Button>
+          <Button
+            variant="primary"
+            size="large"
+            onClick={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          >
+            {" "}
+            Primary Button Large{" "}
+          </Button>
 
-        <Button
-          variant="primary"
-          size="xlarge"
-          onClick={function (): void {
-            throw new Error("Function not implemented.");
-          }}
-        >
-          {" "}
-          Primary Button XLarge{" "}
-        </Button>
+          <Button
+            variant="primary"
+            size="xlarge"
+            onClick={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          >
+            {" "}
+            Primary Button XLarge{" "}
+          </Button>
+        </div>
       </div>
       <div>
         <Button
@@ -120,6 +125,9 @@ function Buttons() {
         >
           <p>Yes</p>
         </Card>
+      </div>
+      <div>
+        <Lamp></Lamp>
       </div>
     </>
   );

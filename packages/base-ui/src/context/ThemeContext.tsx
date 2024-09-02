@@ -15,7 +15,10 @@ export const ThemeContext = createContext<ThemeContextProps | undefined>(
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   children,
 }): JSX.Element => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme ? JSON.parse(savedTheme) : "light";
+  });
 
   const toggleTheme = useCallback(() => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
@@ -23,18 +26,12 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
 
   useEffect(() => {
     document.body.className = theme;
+    localStorage.setItem("theme", JSON.stringify(theme));
   }, [theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
-      {/* <ThemeContext.Consumer value={theme}>
-        {({ light }) => (
-          <div className={`theme-${theme}`}>
-            <button onClick={toggleTheme}>Toggle Theme</button>
-          </div>
-        )}
-      </ThemeContext.Consumer> */}
     </ThemeContext.Provider>
   );
 };

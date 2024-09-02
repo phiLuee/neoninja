@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.ts", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "selector",
   plugins: [
     function ({ addBase, theme }) {
       const colors = theme("colors");
