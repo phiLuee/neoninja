@@ -33,7 +33,9 @@ export const Collapsible = forwardRef<HTMLElement, CollapsibleProps>(
 
     const handleTransitionEnd = useCallback(
       (event: React.TransitionEvent<HTMLDivElement>) => {
-        if (event.target !== event.currentTarget) return;
+        // Alternative:
+        // if (event.target !== event.currentTarget) return;
+        event.stopPropagation();
 
         if (contentRef.current) {
           const container = contentRef.current.querySelector(
