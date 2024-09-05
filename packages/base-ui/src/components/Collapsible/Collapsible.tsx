@@ -1,31 +1,23 @@
-import { useState, useRef, useEffect, forwardRef, Ref } from "react";
+import {
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+  useLayoutEffect,
+  useCallback,
+} from "react";
 import "./Collapsible.scss";
 
 import { CollapsibleProps } from "./Collapsible.d";
 
 export const Collapsible = forwardRef<HTMLElement, CollapsibleProps>(
-  (
-    {
-      label,
-      children,
-      as: Component = "div",
-      isOpen: controlledIsOpen,
-      className,
-      trigger,
-    },
-    ref
-  ) => {
-    const [isOpen, setIsOpen] = useState(controlledIsOpen || false);
+  ({ children, as: Component = "div", inProp = false, className }, ref) => {
     const contentRef = useRef<HTMLDivElement>(null);
+    useImperativeHandle(ref, () => contentRef.current as HTMLElement);
 
-    const toggle = () => {
-      setIsOpen(!isOpen);
-    };
-
-    useEffect(() => {
+    useLayoutEffect(() => {
       if (contentRef.current) {
         contentRef.current.style.height = `${contentRef.current.scrollHeight}px`;
-        if (!isOpen) {
+        if (!inProp) {
           requestAnimationFrame(() => {
             if (contentRef.current) {
               contentRef.current.style.height = "0px";
@@ -33,31 +25,21 @@ export const Collapsible = forwardRef<HTMLElement, CollapsibleProps>(
           });
         }
       }
-    }, [isOpen]);
+    }, [inProp]);
 
-    const handleTransitionEnd = () => {
-      if (contentRef.current && isOpen) {
+    const handleTransitionEnd = useCallback(() => {
+      if (contentRef.current && inProp) {
         contentRef.current.style.height = "auto";
       }
-    };
+    }, [inProp]);
 
     return (
       <Component
-        ref={ref as Ref<HTMLElement>}
-        className={`collapsible ${className || ""}`.trim()}
+        ref={contentRef}
+        className={`collapsible collapsible__container ${className || ""} ${inProp ? "open" : ""}`.trim()}
+        onTransitionEnd={handleTransitionEnd}
       >
-        <div onClick={toggle} className="collapsible__toggle">
-          {trigger || label}
-        </div>
-        <div className="collapsible__container relative">
-          <div
-            ref={contentRef}
-            onTransitionEnd={handleTransitionEnd}
-            className={`collapsible__content ${isOpen ? "open" : ""}`}
-          >
-            {children}
-          </div>
-        </div>
+        {children}
       </Component>
     );
   }

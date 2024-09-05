@@ -11,10 +11,7 @@ import About from "./pages/About";
 import { Navbar, Button, Offcanvas, useTheme } from "base-ui";
 import Components from "./pages/Components";
 import Buttons from "./pages/Buttons";
-import Ninja from "./components/Ninja";
-import MenuList from "./components/MenuList/MenuList"; // Ensure this path is correct or update it to the correct path
 import MenuItem from "./components/MenuItem/MenuItem";
-import { Collapsible } from "base-ui";
 import Menu from "./parts/Menu";
 
 const App: React.FC = () => {
