@@ -8,6 +8,7 @@ import {
 import "./Collapsible.scss";
 
 import { CollapsibleProps } from "./Collapsible.d";
+import clsx from "clsx";
 
 export const Collapsible = forwardRef<HTMLElement, CollapsibleProps>(
   ({ children, as: Component = "div", inProp = false, className }, ref) => {
@@ -15,15 +16,15 @@ export const Collapsible = forwardRef<HTMLElement, CollapsibleProps>(
     useImperativeHandle(ref, () => contentRef.current as HTMLElement);
 
     useLayoutEffect(() => {
-      if (contentRef.current) {
-        contentRef.current.style.height = `${contentRef.current.scrollHeight}px`;
-        if (!inProp) {
-          requestAnimationFrame(() => {
-            if (contentRef.current) {
-              contentRef.current.style.height = "0px";
-            }
-          });
-        }
+      if (!contentRef.current) return;
+
+      contentRef.current.style.height = `${contentRef.current.scrollHeight}px`;
+      if (!inProp) {
+        requestAnimationFrame(() => {
+          if (contentRef.current) {
+            contentRef.current.style.height = "0px";
+          }
+        });
       }
     }, [inProp]);
 
@@ -36,7 +37,9 @@ export const Collapsible = forwardRef<HTMLElement, CollapsibleProps>(
     return (
       <Component
         ref={contentRef}
-        className={`collapsible collapsible__container ${className || ""} ${inProp ? "open" : ""}`.trim()}
+        className={clsx("collapsible collapsible__container", className, {
+          open: inProp,
+        })}
         onTransitionEnd={handleTransitionEnd}
       >
         {children}
