@@ -6,6 +6,7 @@ import { useState } from "react";
 
 function Menu() {
   const [isVisible, setVisibility] = useState(false);
+  const [isVisible2, setVisibility2] = useState(false);
   return (
     <>
       <p>Menu</p>
@@ -17,6 +18,8 @@ function Menu() {
             <MenuList>
               <MenuItem to="/components/buttons" label="Buttons" />
             </MenuList>
+            <button onClick={() => setVisibility2(!isVisible2)}>SubMenu</button>
+            <Collapsible inProp={isVisible2}> Nummer Zwei</Collapsible>
           </Collapsible>
           <MenuItem to="/about" label="About" />
         </MenuList>

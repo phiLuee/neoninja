@@ -1,12 +1,10 @@
 .collapsible {
-  &.collapsible__container {
+  & .collapsible__container {
     overflow: hidden;
     height: 0;
-    transition:
-      max-height 0.3s ease,
-      height 0.3s ease;
+    transition: height 0.3s ease;
 
-    &.open {
+    &--open {
       height: auto;
     }
   }

@@ -1,7 +1,6 @@
-import { forwardRef, Ref, useEffect, useRef, useState } from "react";
+import { forwardRef, Ref, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./MenuItem.scss";
-import ListContext from "../List/ListContext";
 import React from "react";
 import { Collapsible } from "base-ui";
 
@@ -15,6 +14,7 @@ export const MenuItem = forwardRef<
   HTMLAnchorElement | HTMLButtonElement,
   MenuItemProps
 >(function MenuItem({ to = "#", label = "", children }, ref) {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <li className="menu-item mx-2">
       {!children && (
@@ -27,7 +27,12 @@ export const MenuItem = forwardRef<
         </NavLink>
       )}
 
-      {children && <Collapsible label={label}>{children}</Collapsible>}
+      {children && (
+        <>
+          <button onClick={() => setIsOpen(!isOpen)}>{label}</button>
+          <Collapsible inProp={isOpen}>{children}</Collapsible>
+        </>
+      )}
     </li>
   );
 });
