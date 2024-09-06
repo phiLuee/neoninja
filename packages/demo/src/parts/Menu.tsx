@@ -7,7 +7,7 @@ const Menu: React.FC = () => {
       <MenuList>
         <MenuItem to="/" label="Home" />
         <MenuItem label="Components">
-          <MenuList>
+          <MenuList className="mx-2">
             <MenuItem to="/components/buttons" label="Buttons" />
           </MenuList>
         </MenuItem>

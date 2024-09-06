@@ -1,6 +1,7 @@
 export interface MenuItemProps {
   label?: string;
   to?: string;
+  className?: string; // Optional className prop for styling
   children?: React.ReactNode; // Optional children prop for submenu
 }
 

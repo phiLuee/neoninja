@@ -38,15 +38,15 @@ const App: React.FC = () => {
 
         <div className="flex flex-row justify-end w-full md:w-auto">
           <MenuList className="menu-list flex flex-row items-center">
-            <MenuItem to="/" label="Home"></MenuItem>
-            <MenuItem label="Components">
-              <MenuList className="">
+            <MenuItem to="/" label="Home" className="mx-2"></MenuItem>
+            <MenuItem label="Components" className="mx-2">
+              <MenuList>
                 <MenuItem label="Buttons" to="/components/buttons" />
                 <MenuItem label="Buttons" to="/components/buttons" />
                 <MenuItem label="Buttons" to="/components/buttons" />
               </MenuList>
             </MenuItem>
-            <MenuItem to="/about" label="About"></MenuItem>
+            <MenuItem to="/about" label="About" className="mx-2"></MenuItem>
           </MenuList>
           <ul className="flex flex-row items-center">
             <li className="px-2">

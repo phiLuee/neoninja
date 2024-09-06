@@ -8,9 +8,9 @@ export const MenuList: React.FC<{
   className?: string;
 }> = ({ children, className }) => {
   const defaultClassName = "menu-list";
-  const classes = clsx(defaultClassName, className);
+  const classNames = clsx(defaultClassName, className);
 
-  return <List className={classes}>{children}</List>;
+  return <List className={classNames}>{children}</List>;
 };
 
 export default MenuList;
