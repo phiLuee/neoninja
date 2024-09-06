@@ -1,4 +1,8 @@
 import * as React from "react";
 
-declare const ListContext: React.Context<{ dense?: boolean }>;
+export interface ListContextProps {
+  dense: boolean;
+}
+
+declare const ListContext: React.Context<ListContextProps>;
 export default ListContext;

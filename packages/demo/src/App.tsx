@@ -1,17 +1,18 @@
 // src/App.tsx
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  NavLink,
-} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import { Navbar, Button, Offcanvas, useTheme } from "base-ui";
+import {
+  Navbar,
+  Button,
+  Offcanvas,
+  useTheme,
+  MenuList,
+  MenuItem,
+} from "base-ui";
 import Components from "./pages/Components";
 import Buttons from "./pages/Buttons";
-import MenuItem from "./components/MenuItem/MenuItem";
 import Menu from "./parts/Menu";
 
 const App: React.FC = () => {
@@ -24,7 +25,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <Router>
+    <>
       <Navbar>
         <a href="/" className="flex items-center">
           <img
@@ -34,51 +35,19 @@ const App: React.FC = () => {
           />
           <span className="text-black dark:text-white">NeoNinja</span>
         </a>
+
         <div className="flex flex-row justify-end w-full md:w-auto">
-          <ul className="menu-list flex flex-row items-center">
-            <li className="px-2">
-              <NavLink
-                to="/"
-                className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white active:text-blue-700"
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="px-2 nav-item">
-              <MenuItem label="Components">
-                <ul className="">
-                  <li className="px-2">
-                    <NavLink
-                      to="/components/buttons"
-                      className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:text-white"
-                    >
-                      Buttons
-                    </NavLink>
-                    <NavLink
-                      to="/components/buttons"
-                      className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:text-white"
-                    >
-                      Buttons
-                    </NavLink>
-                    <NavLink
-                      to="/components/buttons"
-                      className="block py-2 px-3 text-gray-900 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:text-white"
-                    >
-                      Buttons
-                    </NavLink>
-                  </li>
-                </ul>
-              </MenuItem>
-            </li>
-            <li className="px-2">
-              <NavLink
-                to="/about"
-                className="block py-2 px-3 text-gray-900  md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500  dark:hover:text-white"
-              >
-                About
-              </NavLink>
-            </li>
-          </ul>
+          <MenuList className="menu-list flex flex-row items-center">
+            <MenuItem to="/" label="Home"></MenuItem>
+            <MenuItem label="Components">
+              <MenuList className="">
+                <MenuItem label="Buttons" to="/components/buttons" />
+                <MenuItem label="Buttons" to="/components/buttons" />
+                <MenuItem label="Buttons" to="/components/buttons" />
+              </MenuList>
+            </MenuItem>
+            <MenuItem to="/about" label="About"></MenuItem>
+          </MenuList>
           <ul className="flex flex-row items-center">
             <li className="px-2">
               <Button size="xsmall" onClick={toggleTheme}>
@@ -149,7 +118,7 @@ const App: React.FC = () => {
           <Route path="/components/buttons" element={<Buttons />} />
         </Routes>
       </div>
-    </Router>
+    </>
   );
 };
 

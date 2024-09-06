@@ -25,11 +25,12 @@ export default defineConfig({
       fileName: (format) => `neoninja.${format}.js`,
     },
     rollupOptions: {
-      external: ["react", "react-dom", "tailwindcss"],
+      external: ["react", "react-dom", "react-router-dom", "tailwindcss"],
       output: {
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
+          "react-router-dom": "ReactRouterDOM",
           tailwindcss: "tailwindcss",
         },
       },

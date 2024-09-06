@@ -1,12 +1,4 @@
-import React, {
-  createContext,
-  useState,
-  ReactNode,
-  useCallback,
-  useContext,
-  Context,
-  FC,
-} from "react";
+import { ReactNode, Context, FC } from "react";
 
 /**
  * ThemeContextProps interface defines the shape of the context value.

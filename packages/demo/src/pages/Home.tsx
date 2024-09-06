@@ -1,5 +1,4 @@
 import Container from "../components/Container/Container";
-import Lamp from "../components/Lamp";
 import Ninja from "../components/Ninja";
 
 function Home() {
