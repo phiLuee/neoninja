@@ -1,16 +1,6 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  ElementType,
-  forwardRef,
-  Ref,
-  FC,
-} from "react";
-
 export interface CollapsibleProps {
   children: React.ReactNode;
-  as?: ElementType;
+  as?: React.ElementType;
   inProp?: boolean;
   onToggle?: (inProp: boolean) => void;
   className?: string;

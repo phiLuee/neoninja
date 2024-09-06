@@ -1,6 +1,8 @@
 import React, { ReactElement } from "react";
 import "./MenuList.scss";
 import { MenuItemProps } from "../MenuItem/MenuItem";
+import { List } from "base-ui";
+import clsx from "clsx";
 
 export interface MenuListProps {
   children: ReactElement<MenuItemProps>[]; // Ensure children are MenuItem components
@@ -11,6 +13,9 @@ export const MenuList: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ children, className }) => {
+  const defaultClassName = "menu-list";
+
+  const classes = clsx(defaultClassName, className);
   // React.Children.forEach(children, (child) => {
   //   if (
   //     React.isValidElement(child) &&
@@ -24,7 +29,7 @@ export const MenuList: React.FC<{
   //   }
   // });
 
-  return <ul className={className}>{children}</ul>;
+  return <List className={classes}>{children}</List>;
 };
 
 export default MenuList;
