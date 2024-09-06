@@ -1,8 +1,6 @@
 import React, { ReactElement } from "react";
 import "./MenuList.scss";
-
-import MenuItem, { MenuItemProps } from "../MenuItem/MenuItem";
-import { Button, Collapsible } from "base-ui";
+import { MenuItemProps } from "../MenuItem/MenuItem";
 
 export interface MenuListProps {
   children: ReactElement<MenuItemProps>[]; // Ensure children are MenuItem components
