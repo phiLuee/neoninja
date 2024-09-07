@@ -10,8 +10,11 @@ import { CollapsibleHandle } from "../Collapsible/Collapsible.d";
 export const MenuItem = forwardRef<
   HTMLAnchorElement | HTMLButtonElement | HTMLLIElement,
   MenuItemProps
->(function MenuItem({ to = "#", label = "", className, children }, ref) {
-  const classNames = clsx(className, "menu-item");
+>(function MenuItem(
+  { to = "#", label = "", className, children, subFixed = false },
+  ref
+) {
+  const classNames = clsx(className, "menu-item relative");
   const collapsibleRef = useRef<CollapsibleHandle>(null);
 
   const toggleCollapsible = useCallback(() => {
@@ -32,7 +35,14 @@ export const MenuItem = forwardRef<
           >
             {label}
           </button>
-          <Collapsible ref={collapsibleRef}>{children}</Collapsible>
+          <Collapsible
+            ref={collapsibleRef}
+            className={clsx(
+              subFixed ? "fixed z-20 w-auto bg-white dark:bg-gray-900" : ""
+            )}
+          >
+            {children}
+          </Collapsible>
         </>
       )}
     </ListItem>

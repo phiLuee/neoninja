@@ -1,5 +1,5 @@
 // src/App.tsx
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -20,9 +20,9 @@ const App: React.FC = () => {
 
   const { theme, toggleTheme } = useTheme();
 
-  const drawerToggle = (): void => {
+  const drawerToggle = useCallback(() => {
     setShowOffcanvas(!showOffcanvas);
-  };
+  }, [showOffcanvas]);
 
   return (
     <>
@@ -39,7 +39,7 @@ const App: React.FC = () => {
         <div className="flex flex-row justify-end w-full md:w-auto">
           <MenuList className="menu-list flex flex-row items-center">
             <MenuItem to="/" label="Home" className="mx-2"></MenuItem>
-            <MenuItem label="Components" className="mx-2">
+            <MenuItem label="Components" className="mx-2" subFixed={true}>
               <MenuList>
                 <MenuItem label="Buttons" to="/components/buttons" />
                 <MenuItem label="Buttons" to="/components/buttons" />

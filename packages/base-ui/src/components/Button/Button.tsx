@@ -5,7 +5,14 @@ import { ButtonProps } from "./Button.d";
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { variant = "primary", size = "medium", theme = "dark", onClick, children },
+    {
+      variant = "primary",
+      size = "medium",
+      theme = "dark",
+      onClick,
+      children,
+      disabled = false,
+    },
     ref
   ) => {
     const baseStyles =
@@ -33,7 +40,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       "button-no-flex"
     );
     return (
-      <button ref={ref} className={classes} onClick={onClick}>
+      <button
+        ref={ref}
+        className={classes}
+        onClick={onClick}
+        disabled={disabled}
+      >
         {children}
       </button>
     );

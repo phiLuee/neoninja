@@ -10,6 +10,7 @@ export interface ButtonProps {
   theme?: Theme;
   onClick: () => void;
   children: ReactNode;
+  disabled?: boolean;
 }
 
 export const Button: FC<ButtonProps>;
