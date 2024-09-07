@@ -20,7 +20,7 @@ const App: React.FC = () => {
 
   const { theme, toggleTheme } = useTheme();
 
-  const drawerToggle = () => {
+  const drawerToggle = (): void => {
     setShowOffcanvas(!showOffcanvas);
   };
 

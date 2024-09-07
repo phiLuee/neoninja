@@ -15,7 +15,7 @@ import { useCallback, useLayoutEffect } from "react";
 export const useCollapsibleLogic = (
   contentRef: React.RefObject<HTMLElement>,
   open: boolean = false
-) => {
+): React.TransitionEventHandler<HTMLDivElement> => {
   useLayoutEffect(() => {
     const container = contentRef.current?.querySelector(
       ".collapsible__container"

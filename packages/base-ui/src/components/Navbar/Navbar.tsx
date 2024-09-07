@@ -16,7 +16,7 @@ export const Navbar: React.FC<NavbarProps> = ({ children }) => {
     }
   }, [show]);
 
-  const handleToggle = () => {
+  const handleToggle = (): void => {
     setShow(!show);
   };
 
