@@ -6,5 +6,10 @@ export interface CollapsibleProps {
   className?: string;
 }
 
+export type CollapsibleHandle = {
+  element: HTMLElement;
+  toggle: () => void;
+};
+
 export const Collapsible: FC<CollapsibleProps>;
 export default Collapsible;

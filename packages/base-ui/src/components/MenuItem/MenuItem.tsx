@@ -1,17 +1,19 @@
-import { forwardRef, Ref, useState } from "react";
+import { forwardRef, Ref, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "./MenuItem.scss";
 import { MenuItemProps } from "./MenuItem.d";
 import { Collapsible } from "../Collapsible/Collapsible";
 import { ListItem } from "../ListItem";
 import clsx from "clsx";
+import { CollapsibleHandle } from "../Collapsible/Collapsible.d";
 
 export const MenuItem = forwardRef<
   HTMLAnchorElement | HTMLButtonElement | HTMLLIElement,
   MenuItemProps
 >(function MenuItem({ to = "#", label = "", className, children }, ref) {
-  const [isOpen, setIsOpen] = useState(false);
   const classNames = clsx(className, "menu-item");
+  const collapsibleRef = useRef<CollapsibleHandle>(null);
+
   return (
     <ListItem className={classNames}>
       {!children ? (
@@ -22,11 +24,11 @@ export const MenuItem = forwardRef<
         <>
           <button
             ref={ref as Ref<HTMLButtonElement>}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => collapsibleRef.current?.toggle()}
           >
             {label}
           </button>
-          <Collapsible inProp={isOpen}>{children}</Collapsible>
+          <Collapsible ref={collapsibleRef}>{children}</Collapsible>
         </>
       )}
     </ListItem>

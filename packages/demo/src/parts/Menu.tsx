@@ -9,6 +9,11 @@ const Menu: React.FC = () => {
         <MenuItem label="Components">
           <MenuList className="mx-2">
             <MenuItem to="/components/buttons" label="Buttons" />
+            <MenuItem label="Sub">
+              <MenuList className="mx-2">
+                <li>ListItem</li>
+              </MenuList>
+            </MenuItem>
           </MenuList>
         </MenuItem>
         <MenuItem to="/about" label="About" />
