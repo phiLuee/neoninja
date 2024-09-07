@@ -1,4 +1,4 @@
-function Components() {
+function Components(): React.ReactElement {
   return (
     <>
       <h1>Components</h1>

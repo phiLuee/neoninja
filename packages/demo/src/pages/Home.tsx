@@ -1,7 +1,9 @@
 import Container from "../components/Container/Container";
 import Ninja from "../components/Ninja";
 
-function Home() {
+import React from "react";
+
+function Home(): React.ReactElement {
   return (
     <>
       <Container className="flex justify-between">

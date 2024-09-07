@@ -1,7 +1,7 @@
 import { Button, Card } from "base-ui";
 import Lamp from "../components/Lamp";
 
-function Buttons() {
+function Buttons(): React.ReactElement {
   const buttonContainerStyle: React.CSSProperties = {};
 
   return (

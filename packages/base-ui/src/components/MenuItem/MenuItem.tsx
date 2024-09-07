@@ -1,4 +1,4 @@
-import { forwardRef, Ref, useRef } from "react";
+import { forwardRef, Ref, useCallback, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "./MenuItem.scss";
 import { MenuItemProps } from "./MenuItem.d";
@@ -14,6 +14,10 @@ export const MenuItem = forwardRef<
   const classNames = clsx(className, "menu-item");
   const collapsibleRef = useRef<CollapsibleHandle>(null);
 
+  const toggleCollapsible = useCallback(() => {
+    collapsibleRef.current?.toggle();
+  }, []);
+
   return (
     <ListItem className={classNames}>
       {!children ? (
@@ -24,7 +28,7 @@ export const MenuItem = forwardRef<
         <>
           <button
             ref={ref as Ref<HTMLButtonElement>}
-            onClick={() => collapsibleRef.current?.toggle()}
+            onClick={toggleCollapsible}
           >
             {label}
           </button>
