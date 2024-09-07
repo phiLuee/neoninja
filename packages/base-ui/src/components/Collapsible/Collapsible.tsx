@@ -1,40 +1,44 @@
-import {
-  useRef,
-  forwardRef,
-  useImperativeHandle,
-  useLayoutEffect,
-  useCallback,
-  useState,
-} from "react";
+import { useRef, forwardRef, useImperativeHandle, useState } from "react";
 import clsx from "clsx";
 import "./Collapsible.scss";
 import { CollapsibleProps, CollapsibleHandle } from "./Collapsible.d";
+import useCollapsibleLogic from "./useCollapsibleLogic";
 
-const updateContainer = (container: HTMLElement | null, inProp: boolean) => {
-  if (!container) return;
-  container.style.height = `${container.scrollHeight}px`;
-
-  if (!inProp) {
-    requestAnimationFrame(() => {
-      container.style.height = "0px";
-    });
-  }
-};
-
-const handleTransitionEnd = (
-  event: React.TransitionEvent<HTMLDivElement>,
-  contentRef: React.RefObject<HTMLElement>
-) => {
-  event.stopPropagation();
-  const container = contentRef.current?.querySelector(
-    ".collapsible__container"
-  ) as HTMLElement;
-  if (container) {
-    container.classList.toggle("collapsible__container--open");
-    container.style.removeProperty("height");
-  }
-};
-
+/**
+ * A collapsible component that can be toggled open or closed.
+ *
+ * @component
+ * @param {CollapsibleProps} props - The properties for the Collapsible component.
+ * @param {React.ReactNode} props.children - The content to be displayed inside the collapsible component.
+ * @param {React.ElementType} [props.as="div"] - The HTML element or custom component to be used as the container.
+ * @param {boolean} [props.inProp=false] - Initial state of the collapsible component, whether it is open or closed.
+ * @param {string} [props.className] - Additional class names to apply to the collapsible component.
+ * @param {React.Ref<CollapsibleHandle>} ref - A ref object to access the collapsible component's imperative handle.
+ *
+ * @returns {JSX.Element} The rendered collapsible component.
+ *
+ * @example
+ * ```tsx
+ * const collapsibleRef = useRef<CollapsibleHandle>(null);
+ *
+ * return (
+ *   <button onClick={() => collapsibleRef.current?.toggle()}>
+ *   <Collapsible ref={collapsibleRef} inProp={true}>
+ *     <p>This is some collapsible content.</p>
+ *   </Collapsible>
+ * );
+ * ```
+ *
+ * @typedef {Object} CollapsibleHandle
+ * @property {HTMLElement} element - The HTML element of the collapsible component.
+ * @property {() => void} toggle - Function to toggle the open state of the collapsible component.
+ *
+ * @typedef {Object} CollapsibleProps
+ * @property {React.ReactNode} children - The content to be displayed inside the collapsible component.
+ * @property {React.ElementType} [as] - The HTML element or custom component to be used as the container.
+ * @property {boolean} [inProp] - Initial state of the collapsible component, whether it is open or closed.
+ * @property {string} [className] - Additional class names to apply to the collapsible component.
+ */
 export const Collapsible = forwardRef<CollapsibleHandle, CollapsibleProps>(
   ({ children, as: Component = "div", inProp = false, className }, ref) => {
     const [open, toggleOpen] = useState(inProp || false);
@@ -47,18 +51,7 @@ export const Collapsible = forwardRef<CollapsibleHandle, CollapsibleProps>(
       },
     }));
 
-    useLayoutEffect(() => {
-      const container = contentRef.current?.querySelector(
-        ".collapsible__container"
-      ) as HTMLElement;
-      updateContainer(container, open);
-    }, [open]);
-
-    const handleTransitionEndCallback = useCallback(
-      (event: React.TransitionEvent<HTMLDivElement>) =>
-        handleTransitionEnd(event, contentRef),
-      []
-    );
+    const handleTransitionEndCallback = useCollapsibleLogic(contentRef, open);
 
     return (
       <Component ref={contentRef} className={clsx("collapsible", className)}>
