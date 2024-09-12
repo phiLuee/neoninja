@@ -6,6 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     open: true,
+    host: true,
+    port: 5173,
     watch: {
       usePolling: true,
       interval: 1000, // Zeitintervall in Millisekunden
