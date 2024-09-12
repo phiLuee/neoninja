@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  dev:
+    image: node:22
+    working_dir: /neoninja
+    volumes:
+      - .:/neoninja
+    ports:
+      - "5173:5173"
+    command: bash -c "npm install --silent && npm run dev"
