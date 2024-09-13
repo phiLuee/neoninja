@@ -33,7 +33,7 @@ const App: React.FC = () => {
             className="m-1"
             alt="Logo"
           />
-          <span className="text-black dark:text-white">NeoNinja</span>
+          <span className="text-black dark:text-white">NeoNinja2</span>
         </a>
 
         <div className="flex flex-row justify-end w-full md:w-auto">

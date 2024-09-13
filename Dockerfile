@@ -4,6 +4,10 @@ FROM node:22
 # Setzen Sie das Arbeitsverzeichnis im Container
 WORKDIR /neoninja
 
+# Kopieren Sie das Startskript in das Arbeitsverzeichnis
+COPY start.sh .
+
+
 # Kopieren Sie package.json und package-lock.json in das Arbeitsverzeichnis
 COPY package*.json ./
 
@@ -11,13 +15,9 @@ COPY package*.json ./
 COPY packages/base-ui/package.json packages/base-ui/
 COPY packages/demo/package.json packages/demo/
 
-# Installieren Sie die Abhängigkeiten
-RUN npm install
 
-
+# Geben Sie dem Startskript Ausführungsrechte
+RUN chmod +x start.sh 
 
 # Exponieren Sie den Port, auf dem die Anwendung läuft
 EXPOSE 5173
-
-# Starten Sie die Anwendung
-CMD ["npm", "run", "dev", "--", "--host"]

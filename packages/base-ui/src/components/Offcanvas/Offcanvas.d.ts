@@ -6,6 +6,7 @@ export interface OffcanvasProps {
   children?: ReactNode;
   placement?: Placement;
   show?: boolean;
+  type?: "fixed" | "absolute";
 }
 
 export const Offcanvas: FC<OffcanvasProps>;

@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 export interface CollapsibleProps {
   children: React.ReactNode;
   as?: React.ElementType;

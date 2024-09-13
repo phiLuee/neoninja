@@ -1,15 +1,19 @@
-import { useCallback, useEffect, useRef, forwardRef } from "react";
+import { useCallback, useEffect, useRef, forwardRef, useState } from "react";
 import "./Navbar.scss";
 import { NavbarProps } from "./Navbar.d";
 import { Collapsible } from "../Collapsible";
 import { CollapsibleHandle } from "../Collapsible/Collapsible.d";
+import { Offcanvas } from "../Offcanvas";
 
 export const Navbar = forwardRef<HTMLElement, NavbarProps>(
   ({ children }, ref) => {
     const submenuRef = useRef<CollapsibleHandle>(null);
+    const [offcanvasShow, toggleOffcanvas] = useState(false);
 
+    const offcanvasRef = useRef<HTMLDivElement>(null);
     const toggle = useCallback(() => {
       submenuRef.current?.toggle();
+      offcanvasRef.current?.classList.toggle("transform-none");
     }, []);
 
     useEffect(() => {
@@ -25,10 +29,17 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
       >
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           {children}
-          <button onClick={toggle} aria-controls="submenu">
+          <button
+            onClick={() => toggleOffcanvas((prev) => !prev)}
+            aria-controls="submenu"
+          >
             Toggle
           </button>
         </div>
+
+        <Offcanvas placement="bottom" type="absolute" show={offcanvasShow}>
+          <p>Test</p>
+        </Offcanvas>
 
         <Collapsible
           ref={submenuRef}

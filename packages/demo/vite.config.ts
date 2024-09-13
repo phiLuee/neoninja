@@ -5,12 +5,13 @@ import tailwindcss from "tailwindcss";
 export default defineConfig({
   plugins: [react()],
   server: {
-    open: true,
+    open: false,
     host: true,
     port: 5173,
     watch: {
       usePolling: true,
       interval: 1000, // Zeitintervall in Millisekunden
+      followSymlinks: true,
     },
   },
   build: {

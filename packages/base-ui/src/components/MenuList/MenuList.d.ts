@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, FC } from "react";
 import { MenuItemProps } from "../MenuItem/MenuItem.d";
 
 export interface MenuListProps {
@@ -6,6 +6,6 @@ export interface MenuListProps {
   className?: string;
 }
 
-export const MenuList: React.FC<MenuListProps>;
+export const MenuList: FC<MenuListProps>;
 
 export default MenuList;

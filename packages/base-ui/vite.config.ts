@@ -17,6 +17,15 @@ export default defineConfig({
       outDir: "dist",
     }),
   ],
+  server: {
+    open: false,
+    host: true,
+    watch: {
+      usePolling: true,
+      followSymlinks: true,
+      interval: 1000,
+    },
+  },
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
