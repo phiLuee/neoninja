@@ -11,6 +11,7 @@ import {
   MenuList,
   MenuItem,
   NavbarHandle,
+  Modal,
 } from "base-ui";
 import Components from "./pages/Components";
 import Buttons from "./pages/Buttons";
@@ -117,6 +118,8 @@ const App: React.FC = () => {
       <Offcanvas show={showOffcanvas} placement="left">
         <Menu></Menu>
       </Offcanvas>
+
+      <Modal></Modal>
 
       <div className="max-w-screen-xl mx-auto">
         <Routes>
