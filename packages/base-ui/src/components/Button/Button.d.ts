@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, RefAttributes } from "react";
 
 export type Variant = "primary" | "secondary";
 export type Size = "xsmall" | "small" | "medium" | "large" | "xlarge";
@@ -13,5 +13,5 @@ export interface ButtonProps {
   disabled?: boolean;
 }
 
-export const Button: FC<ButtonProps>;
+export const Button: FC<ButtonProps & RefAttributes<HTMLButtonElement>>;
 export default Button;
