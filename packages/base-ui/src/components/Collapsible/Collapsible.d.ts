@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 
 export interface CollapsibleProps {
   children: React.ReactNode;
@@ -13,5 +13,7 @@ export type CollapsibleHandle = {
   toggle: () => void;
 };
 
-export const Collapsible: FC<CollapsibleProps>;
+export const Collapsible: FC<
+  CollapsibleProps & React.RefAttributes<CollapsibleHandle>
+>;
 export default Collapsible;

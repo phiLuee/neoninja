@@ -1,32 +1,33 @@
-import { useCallback, useEffect, useRef, forwardRef } from "react";
+import { useCallback, useRef, forwardRef, useImperativeHandle } from "react";
 import "./Navbar.scss";
-import { NavbarProps } from "./Navbar.d";
+import { NavbarHandle, NavbarProps } from "./Navbar.d";
 import { Collapsible } from "../Collapsible";
 import { CollapsibleHandle } from "../Collapsible/Collapsible.d";
-import { Button } from "../Button";
+import clsx from "clsx";
 
-export const Navbar = forwardRef<HTMLElement, NavbarProps>(
-  ({ children }, ref) => {
+export const Navbar = forwardRef<NavbarHandle, NavbarProps>(
+  ({ children, as: Component = "nav", className }, ref) => {
+    const contentRef = useRef<HTMLElement>(null);
     const submenuRef = useRef<CollapsibleHandle>(null);
 
-    const toggle = useCallback(() => {
+    const toggleMenu = useCallback(() => {
       submenuRef.current?.toggle();
     }, []);
 
-    useEffect(() => {
-      if (submenuRef.current) {
-        toggle();
-      }
-    }, [toggle]);
+    useImperativeHandle(ref, () => ({
+      element: contentRef.current as HTMLElement,
+      toggle: () => submenuRef.current?.toggle(),
+    }));
+
+    const classNames = clsx(
+      "bar bg-white dark:bg-gray-900 sticky top-0 w-full z-10",
+      className
+    );
 
     return (
-      <nav
-        ref={ref}
-        className="bar bg-white dark:bg-gray-900 sticky top-0 w-full z-10"
-      >
+      <Component ref={contentRef} className={classNames}>
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           {children}
-          <Button onClick={toggle}>Toggle</Button>
         </div>
 
         <Collapsible
@@ -34,7 +35,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
           className="bar-sub transition-all absolute duration-300 w-full"
         >
           <div className="max-w-screen-xl relative flex flex-wrap items-center justify-between mx-auto p-4">
-            <button className="absolute top-4 right-4 " onClick={toggle}>
+            <button className="absolute top-4 right-4 " onClick={toggleMenu}>
               <svg
                 className="h-6 w-6"
                 xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +55,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
             <p>Hi</p>
           </div>
         </Collapsible>
-      </nav>
+      </Component>
     );
   }
 );

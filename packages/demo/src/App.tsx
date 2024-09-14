@@ -1,5 +1,5 @@
 // src/App.tsx
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -10,6 +10,7 @@ import {
   useTheme,
   MenuList,
   MenuItem,
+  NavbarHandle,
 } from "base-ui";
 import Components from "./pages/Components";
 import Buttons from "./pages/Buttons";
@@ -20,13 +21,19 @@ const App: React.FC = () => {
 
   const { theme, toggleTheme } = useTheme();
 
+  const navbarRef = useRef<NavbarHandle>(null);
+
+  const componentsMenu = useCallback(() => {
+    navbarRef.current?.toggle();
+  }, []);
+
   const drawerToggle = useCallback(() => {
     setShowOffcanvas(!showOffcanvas);
   }, [showOffcanvas]);
 
   return (
     <>
-      <Navbar>
+      <Navbar ref={navbarRef}>
         <a href="/" className="flex items-center">
           <img
             src="https://flowbite.com/docs/images/logo.svg"
@@ -39,13 +46,14 @@ const App: React.FC = () => {
         <div className="flex flex-row justify-end w-full md:w-auto">
           <MenuList className="menu-list flex flex-row items-center">
             <MenuItem to="/" label="Home" className="mx-2"></MenuItem>
-            <MenuItem label="Components" className="mx-2" subFixed={true}>
-              <MenuList>
+            <button onClick={componentsMenu}>
+              Components
+              {/* <MenuList>
                 <MenuItem label="Buttons" to="/components/buttons" />
                 <MenuItem label="Buttons" to="/components/buttons" />
                 <MenuItem label="Buttons" to="/components/buttons" />
-              </MenuList>
-            </MenuItem>
+              </MenuList> */}
+            </button>
             <MenuItem to="/about" label="About" className="mx-2"></MenuItem>
           </MenuList>
           <ul className="flex flex-row items-center">
