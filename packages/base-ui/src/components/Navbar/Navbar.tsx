@@ -1,19 +1,16 @@
-import { useCallback, useEffect, useRef, forwardRef, useState } from "react";
+import { useCallback, useEffect, useRef, forwardRef } from "react";
 import "./Navbar.scss";
 import { NavbarProps } from "./Navbar.d";
 import { Collapsible } from "../Collapsible";
 import { CollapsibleHandle } from "../Collapsible/Collapsible.d";
-import { Offcanvas } from "../Offcanvas";
+import { Button } from "../Button";
 
 export const Navbar = forwardRef<HTMLElement, NavbarProps>(
   ({ children }, ref) => {
     const submenuRef = useRef<CollapsibleHandle>(null);
-    const [offcanvasShow, toggleOffcanvas] = useState(false);
 
-    const offcanvasRef = useRef<HTMLDivElement>(null);
     const toggle = useCallback(() => {
       submenuRef.current?.toggle();
-      offcanvasRef.current?.classList.toggle("transform-none");
     }, []);
 
     useEffect(() => {
@@ -29,21 +26,12 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
       >
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           {children}
-          <button
-            onClick={() => toggleOffcanvas((prev) => !prev)}
-            aria-controls="submenu"
-          >
-            Toggle
-          </button>
+          <Button onClick={toggle}>Toggle</Button>
         </div>
-
-        <Offcanvas placement="bottom" type="absolute" show={offcanvasShow}>
-          <p>Test</p>
-        </Offcanvas>
 
         <Collapsible
           ref={submenuRef}
-          className="bar-sub absolute z-10 transition-all duration-300 w-full"
+          className="bar-sub transition-all absolute duration-300 w-full"
         >
           <div className="max-w-screen-xl relative flex flex-wrap items-center justify-between mx-auto p-4">
             <button className="absolute top-4 right-4 " onClick={toggle}>
