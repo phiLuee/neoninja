@@ -12,6 +12,10 @@
   background-attachment: fixed;
 }
 
+* {
+  transition: background-color 1s, background-image 1s, color 1s;
+}
+
 html:has(body.dark) {
   background-image: url("../assets/background.dark.jpg");
 }
