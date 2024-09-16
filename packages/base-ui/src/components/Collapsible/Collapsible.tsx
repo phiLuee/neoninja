@@ -46,16 +46,17 @@ import useCollapsibleLogic from "./useCollapsibleLogic";
  */
 export const Collapsible = forwardRef<CollapsibleHandle, CollapsibleProps>(
   ({ children, as: Component = "div", inProp = false, className }, ref) => {
-    const [open, toggleOpen] = useState(inProp);
+    const [open, setOpen] = useState(inProp);
     const contentRef = useRef<HTMLElement>(null);
 
     const toggle = useCallback(() => {
-      toggleOpen((prevOpen) => !prevOpen);
+      setOpen((prevOpen) => !prevOpen);
     }, []);
 
     useImperativeHandle(ref, () => ({
       element: contentRef.current as HTMLElement,
       toggle,
+      isOpen: open,
     }));
 
     const handleTransitionEndCallback = useCollapsibleLogic(contentRef, open);

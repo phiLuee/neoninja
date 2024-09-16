@@ -11,6 +11,7 @@ export interface CollapsibleProps {
 export type CollapsibleHandle = {
   element: HTMLElement;
   toggle: () => void;
+  isOpen: boolean;
 };
 
 export const Collapsible: FC<

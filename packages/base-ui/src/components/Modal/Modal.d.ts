@@ -1,2 +1,9 @@
-export const Modal: React.FC<React.HTMLProps<HTMLDivElement>>;
+export type ModalHandle = {
+  element: HTMLElement;
+  setVisibile: (visible: boolean) => void;
+};
+
+export const Modal: React.FC<
+  React.HTMLProps<HTMLDivElement> & React.RefAttributes<ModalHandle>
+>;
 export default Modal;

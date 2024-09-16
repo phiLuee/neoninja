@@ -1,5 +1,5 @@
 // src/App.tsx
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -11,10 +11,11 @@ import {
   MenuList,
   MenuItem,
   NavbarHandle,
-  Modal,
 } from "base-ui";
 import Components from "./pages/Components";
 import Buttons from "./pages/Buttons";
+import Appbar from "./pages/Appbar";
+import Modals from "./pages/Modal";
 import Menu from "./parts/Menu";
 
 const App: React.FC = () => {
@@ -24,9 +25,53 @@ const App: React.FC = () => {
 
   const navbarRef = useRef<NavbarHandle>(null);
 
+  const subnavContentA = useMemo(
+    () => (
+      <>
+        <MenuList className="menu-list flex flex-row items-center">
+          <MenuItem
+            to="/components/buttons"
+            label="Button"
+            className="mx-2"
+          ></MenuItem>
+          <MenuItem
+            to="/components/navbar"
+            label="Navbar"
+            className="mx-2"
+          ></MenuItem>
+          <MenuItem
+            to="/components/modals"
+            label="Modals"
+            className="mx-2"
+          ></MenuItem>
+        </MenuList>
+      </>
+    ),
+    []
+  );
+
+  const subnavContentB = useMemo(
+    () => (
+      <>
+        <div>Components B</div>
+      </>
+    ),
+    []
+  );
+
   const componentsMenu = useCallback(() => {
-    navbarRef.current?.toggle();
-  }, []);
+    if (navbarRef.current) {
+      navbarRef.current.setSubnavContent(subnavContentA);
+      if (!navbarRef.current.isSubnavOpen) navbarRef.current.toggle();
+    }
+  }, [subnavContentA]);
+
+  const otherMenu = useCallback(() => {
+    if (navbarRef.current) {
+      navbarRef.current.setSubnavContent(subnavContentB);
+      if (!navbarRef.current.isSubnavOpen) navbarRef.current.toggle();
+    }
+  }, [subnavContentB]);
 
   const drawerToggle = useCallback(() => {
     setShowOffcanvas(!showOffcanvas);
@@ -45,7 +90,7 @@ const App: React.FC = () => {
         </a>
 
         <div className="flex flex-row justify-end w-full md:w-auto">
-          <MenuList className="menu-list flex flex-row items-center">
+          <MenuList className="menu-list" direction="horizontal">
             <MenuItem to="/" label="Home" className="mx-2"></MenuItem>
             <button onClick={componentsMenu}>
               Components
@@ -55,6 +100,8 @@ const App: React.FC = () => {
                 <MenuItem label="Buttons" to="/components/buttons" />
               </MenuList> */}
             </button>
+            &nbsp;
+            <button onClick={otherMenu}>Other</button>
             <MenuItem to="/about" label="About" className="mx-2"></MenuItem>
           </MenuList>
           <ul className="flex flex-row items-center">
@@ -119,14 +166,14 @@ const App: React.FC = () => {
         <Menu></Menu>
       </Offcanvas>
 
-      <Modal></Modal>
-
       <div className="max-w-screen-xl mx-auto">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/components" element={<Components />} />
           <Route path="/components/buttons" element={<Buttons />} />
+          <Route path="/components/navbar" element={<Appbar />} />
+          <Route path="/components/modals" element={<Modals />} />
         </Routes>
       </div>
     </>

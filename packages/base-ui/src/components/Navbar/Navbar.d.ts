@@ -1,12 +1,15 @@
 import { FC, ReactNode } from "react";
 export interface NavbarProps {
   children: ReactNode;
+  subnavContent?: ReactNode;
   as?: React.ElementType;
   className?: string;
 }
 
 export type NavbarHandle = {
   element: HTMLElement;
+  setSubnavContent: (content: React.ReactNode) => void;
+  isSubnavOpen: boolean;
   toggle: () => void;
 };
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export interface ListContextProps {
-  dense: boolean;
+  direction: "horizontal" | "vertical";
 }
 
 declare const ListContext: React.Context<ListContextProps>;

@@ -1,4 +1,10 @@
-import { useCallback, useRef, forwardRef, useImperativeHandle } from "react";
+import {
+  useCallback,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+  useState,
+} from "react";
 import "./Navbar.scss";
 import { NavbarHandle, NavbarProps } from "./Navbar.d";
 import { Collapsible } from "../Collapsible";
@@ -9,6 +15,7 @@ export const Navbar = forwardRef<NavbarHandle, NavbarProps>(
   ({ children, as: Component = "nav", className }, ref) => {
     const contentRef = useRef<HTMLElement>(null);
     const submenuRef = useRef<CollapsibleHandle>(null);
+    const [subnavContent, setSubnavContent] = useState<React.ReactNode>(null);
 
     const toggleMenu = useCallback(() => {
       submenuRef.current?.toggle();
@@ -16,6 +23,8 @@ export const Navbar = forwardRef<NavbarHandle, NavbarProps>(
 
     useImperativeHandle(ref, () => ({
       element: contentRef.current as HTMLElement,
+      setSubnavContent,
+      isSubnavOpen: submenuRef.current?.isOpen ?? false,
       toggle: () => submenuRef.current?.toggle(),
     }));
 
@@ -52,7 +61,7 @@ export const Navbar = forwardRef<NavbarHandle, NavbarProps>(
                 />
               </svg>
             </button>
-            <p>Hi</p>
+            {subnavContent}
           </div>
         </Collapsible>
       </Component>

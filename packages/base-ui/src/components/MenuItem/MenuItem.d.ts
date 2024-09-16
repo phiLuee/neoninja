@@ -1,6 +1,7 @@
 import React from "react";
+import { ListItemProps } from "../ListItem/ListItem";
 
-export interface MenuItemProps {
+export interface MenuItemProps extends ListItemProps {
   label?: string;
   to?: string;
   className?: string; // Optional className prop for styling

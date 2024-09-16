@@ -6,12 +6,21 @@ import { ListProps } from "./List.d";
 import React from "react";
 
 export const List = forwardRef<HTMLUListElement, ListProps>(
-  ({ className, children, as: Component = "ul" }, ref) => {
+  (
+    { className, children, as: Component = "ul", direction = "vertical" },
+    ref
+  ) => {
+    const context = React.useMemo(() => ({ direction }), [direction]);
+
     const defaultClassName = "list";
 
-    const classes = clsx(defaultClassName, className);
-    const dense = false;
-    const context = React.useMemo(() => ({ dense }), [dense]);
+    const classesHorizontal = "flex flex-row items-center";
+
+    const classes = clsx(
+      defaultClassName,
+      className,
+      context.direction === "horizontal" ? classesHorizontal : ""
+    );
 
     return (
       <ListContext.Provider value={context}>

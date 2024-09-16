@@ -1,6 +1,8 @@
 import * as React from "react";
 
-export const ListContext = React.createContext({});
+export const ListContext = React.createContext({
+  direction: "vertical",
+});
 
 if (process.env.NODE_ENV !== "production") {
   ListContext.displayName = "ListContext";

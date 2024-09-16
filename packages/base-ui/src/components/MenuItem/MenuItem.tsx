@@ -11,10 +11,18 @@ export const MenuItem = forwardRef<
   HTMLAnchorElement | HTMLButtonElement | HTMLLIElement,
   MenuItemProps
 >(function MenuItem(
-  { to = "#", label = "", className, children, subFixed = false },
+  {
+    to = "#",
+    label = "",
+    className,
+    children,
+    subFixed = false,
+    ...listItemProps
+  },
   ref
 ) {
-  const classNames = clsx(className, "menu-item relative");
+  const classNamesLiItem = clsx(className, "menu-item relative");
+  const classNamesActionItem = clsx("py-5 pt-0");
   const collapsibleRef = useRef<CollapsibleHandle>(null);
 
   const toggleCollapsible = useCallback(() => {
@@ -22,14 +30,19 @@ export const MenuItem = forwardRef<
   }, []);
 
   return (
-    <ListItem className={classNames}>
+    <ListItem className={classNamesLiItem} {...listItemProps}>
       {!children ? (
-        <NavLink to={to} ref={ref as Ref<HTMLAnchorElement>}>
+        <NavLink
+          className={classNamesActionItem}
+          to={to}
+          ref={ref as Ref<HTMLAnchorElement>}
+        >
           {label}
         </NavLink>
       ) : (
         <>
           <button
+            className={classNamesActionItem}
             ref={ref as Ref<HTMLButtonElement>}
             onClick={toggleCollapsible}
           >
