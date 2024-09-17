@@ -59,7 +59,7 @@ function Lists(): React.ReactElement {
           </List>
         </Container>
         <Container>
-          <List as="ol">
+          <List as="ol" direction="horizontal" wrap={false}>
             <ListItem>Item 1</ListItem>
             <ListItem>Item 2</ListItem>
             <ListItem>Item 3</ListItem>

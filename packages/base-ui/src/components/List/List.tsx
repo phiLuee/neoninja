@@ -1,41 +1,42 @@
-import { ElementType, forwardRef, ReactElement, useMemo, Ref } from "react";
+import React, { forwardRef, useMemo, ForwardedRef } from "react";
 import clsx from "clsx";
 import "./List.scss";
 import ListContext from "./ListContext";
-import { ListProps } from "./List.d";
+import { ListProps, ListType, RefListType } from "./List.d";
 
-export const List = forwardRef(function List<T extends ElementType = "ul">(
-  {
-    as,
-    className,
-    children,
-    direction = "vertical",
-    wrap = true,
-    ...rest
-  }: ListProps<ElementType> & React.RefAttributes<ElementType>,
-  ref: Ref<T>
-): ReactElement | null {
-  // Memoize the context value to avoid unnecessary re-renders
-  const context = useMemo(() => ({ direction }), [direction]);
+// Implementiere die List-Komponente mit forwardRef
+export const List = forwardRef<RefListType<ListType>, ListProps<ListType>>(
+  function List<T extends ListType = "ul">(
+    {
+      as: Component = "ul" as T,
+      className,
+      children,
+      direction = "vertical",
+      wrap = true,
+      ...rest
+    }: ListProps<T>,
+    ref: ForwardedRef<RefListType<T>>
+  ) {
+    // Memoize den Kontextwert, um unnötige Re-Renders zu vermeiden
+    const context = useMemo(() => ({ direction }), [direction]);
 
-  const defaultClassName = "list flex ";
+    // Berechne die Klassennamen basierend auf der Richtung
+    const classes = clsx("list flex", className, {
+      "flex-row items-center": direction === "horizontal",
+      "flex-col": direction === "vertical",
+      "flex-wrap": wrap,
+    });
 
-  // Compute the class names based on the direction
-  const classes = clsx(defaultClassName, className, {
-    "flex-row items-center": direction === "horizontal",
-    "flex-col": direction === "vertical", // Add vertical specific classes
-    "flex-wrap": wrap,
-  });
+    const ComponentType = Component as React.ElementType;
 
-  const Component = as || "ul";
-
-  return (
-    <ListContext.Provider value={context}>
-      <Component ref={ref} className={classes} {...rest}>
-        {children}
-      </Component>
-    </ListContext.Provider>
-  );
-});
+    return (
+      <ListContext.Provider value={context}>
+        <ComponentType ref={ref} className={classes} {...rest}>
+          {children}
+        </ComponentType>
+      </ListContext.Provider>
+    );
+  }
+);
 
 export default List;
