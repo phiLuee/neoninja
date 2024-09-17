@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect } from "react";
+import { useCallback, useEffect, useLayoutEffect } from "react";
 
 /**
  * Custom hook to manage the logic for a collapsible component.
@@ -14,7 +14,8 @@ import { useCallback, useLayoutEffect } from "react";
  */
 export const useCollapsibleLogic = (
   contentRef: React.RefObject<HTMLElement>,
-  open: boolean = false
+  open: boolean = false,
+  setOpen: (open: boolean) => void
 ): React.TransitionEventHandler<HTMLDivElement> => {
   useLayoutEffect(() => {
     const container = contentRef.current?.querySelector(
@@ -43,6 +44,25 @@ export const useCollapsibleLogic = (
     },
     [contentRef, open]
   );
+
+  const handleClickOutside = useCallback(
+    (event: MouseEvent) => {
+      if (
+        contentRef.current &&
+        !contentRef.current.contains(event.target as Node)
+      ) {
+        setOpen(false);
+      }
+    },
+    [contentRef, setOpen]
+  );
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [handleClickOutside]);
 
   return handleTransitionEnd;
 };

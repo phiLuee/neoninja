@@ -59,7 +59,11 @@ export const Collapsible = forwardRef<CollapsibleHandle, CollapsibleProps>(
       isOpen: open,
     }));
 
-    const handleTransitionEndCallback = useCollapsibleLogic(contentRef, open);
+    const handleTransitionEndCallback = useCollapsibleLogic(
+      contentRef,
+      open,
+      setOpen
+    );
 
     return (
       <Component ref={contentRef} className={clsx("collapsible", className)}>
