@@ -7,10 +7,10 @@ import ListContext from "../List/ListContext";
 export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
   function ListItem({ children, className }, ref) {
     const { direction } = useContext(ListContext);
-    const classNames = clsx(className, "list-item", direction);
+    const classes = clsx("list-item", className, direction);
 
     return (
-      <li ref={ref} className={classNames}>
+      <li ref={ref} className={classes}>
         {children}
       </li>
     );

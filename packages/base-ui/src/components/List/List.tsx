@@ -1,36 +1,29 @@
-import React, { forwardRef, useMemo } from "react";
+import { forwardRef, useMemo } from "react";
 import clsx from "clsx";
 import "./List.scss";
 import ListContext from "./ListContext";
 import { ListProps } from "./List.d";
 
-export const List: React.FC<ListProps> = forwardRef<
-  HTMLUListElement,
-  ListProps
->(({ className, children, direction = "vertical" }, ref) => {
-  const context = useMemo(() => ({ direction }), [direction]);
+export const List = forwardRef<HTMLUListElement, ListProps>(
+  ({ className, children, direction = "vertical" }, ref) => {
+    // Memoize the context value to avoid unnecessary re-renders
+    const context = useMemo(() => ({ direction }), [direction]);
 
-  const defaultClassName = "list";
+    // Compute the class names based on the direction
+    const classes = clsx(
+      "list",
+      className,
+      direction === "horizontal" && "flex flex-row items-center"
+    );
 
-  const classesHorizontal = "flex flex-row items-center";
-
-  const classes = useMemo(
-    () =>
-      clsx(
-        defaultClassName,
-        className,
-        direction === "horizontal" ? classesHorizontal : ""
-      ),
-    [defaultClassName, className, direction, classesHorizontal]
-  );
-
-  return (
-    <ListContext.Provider value={context}>
-      <ul ref={ref} className={classes}>
-        {children}
-      </ul>
-    </ListContext.Provider>
-  );
-});
+    return (
+      <ListContext.Provider value={context}>
+        <ul ref={ref} className={classes}>
+          {children}
+        </ul>
+      </ListContext.Provider>
+    );
+  }
+);
 
 export default List;

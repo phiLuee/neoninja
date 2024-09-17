@@ -7,6 +7,7 @@ export interface MenuItemProps extends ListItemProps {
   className?: string; // Optional className prop for styling
   children?: React.ReactNode; // Optional children prop for submenu
   subFixed?: boolean;
+  ref?: React.Ref<HTMLLIElement>; // Ref for the menu item
 }
 
 export const MenuItem: React.FC<MenuItemProps>;
