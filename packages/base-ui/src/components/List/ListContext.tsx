@@ -1,6 +1,6 @@
-import * as React from "react";
+import { createContext } from "react";
 
-export const ListContext = React.createContext({
+export const ListContext = createContext({
   direction: "vertical",
 });
 

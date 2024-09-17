@@ -92,15 +92,8 @@ const App: React.FC = () => {
         <div className="flex flex-row justify-end w-full md:w-auto">
           <MenuList className="menu-list" direction="horizontal">
             <MenuItem to="/" label="Home" className="mx-2"></MenuItem>
-            <button onClick={componentsMenu}>
-              Components
-              {/* <MenuList>
-                <MenuItem label="Buttons" to="/components/buttons" />
-                <MenuItem label="Buttons" to="/components/buttons" />
-                <MenuItem label="Buttons" to="/components/buttons" />
-              </MenuList> */}
-            </button>
-            &nbsp;
+            <button onClick={componentsMenu}>Components</button>
+            <span> &nbsp;</span>
             <button onClick={otherMenu}>Other</button>
             <MenuItem to="/about" label="About" className="mx-2"></MenuItem>
           </MenuList>
