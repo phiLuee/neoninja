@@ -17,6 +17,7 @@ import Buttons from "./pages/Buttons";
 import Appbar from "./pages/Appbar";
 import Modals from "./pages/Modal";
 import Menu from "./parts/Menu";
+import Lists from "./pages/Lists";
 
 const App: React.FC = () => {
   const [showOffcanvas, setShowOffcanvas] = useState(false);
@@ -32,6 +33,11 @@ const App: React.FC = () => {
           <MenuItem
             to="/components/buttons"
             label="Button"
+            className="mx-2"
+          ></MenuItem>
+          <MenuItem
+            to="/components/lists"
+            label="Lists"
             className="mx-2"
           ></MenuItem>
           <MenuItem
@@ -167,6 +173,7 @@ const App: React.FC = () => {
           <Route path="/components/buttons" element={<Buttons />} />
           <Route path="/components/navbar" element={<Appbar />} />
           <Route path="/components/modals" element={<Modals />} />
+          <Route path="/components/lists" element={<Lists />} />
         </Routes>
       </div>
     </>

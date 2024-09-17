@@ -7,13 +7,13 @@ const Menu: React.FC = () => {
       <MenuList>
         <MenuItem to="/" label="Home" />
         <MenuItem label="Components">
-          <MenuList className="mx-2">
+          <MenuList>
             <MenuItem to="/components/buttons" label="Button"></MenuItem>
             <MenuItem to="/components/navbar" label="Navbar"></MenuItem>
             <MenuItem to="/components/modals" label="Modals"></MenuItem>
             <MenuItem label="Sub">
-              <MenuList className="mx-2">
-                <li>ListItem</li>
+              <MenuList>
+                <MenuItem label="ListItem"></MenuItem>
               </MenuList>
             </MenuItem>
           </MenuList>

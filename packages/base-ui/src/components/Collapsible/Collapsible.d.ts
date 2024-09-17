@@ -6,7 +6,6 @@ export interface CollapsibleProps {
   inProp?: boolean;
   onToggle?: (inProp: boolean) => void;
   className?: string;
-  ref?: React.Ref<HTMLElement>;
 }
 
 export type CollapsibleHandle = {

@@ -1,13 +1,15 @@
-import React from "react";
-import { ListItemProps } from "../ListItem/ListItem";
+import React, { RefAttributes } from "react";
 
-export interface ListProps {
-  children: React.ReactElement<ListItemProps>[]; // Ensure children are ListItem components
+export interface ListProps<T extends ElementType = "ul"> {
+  as?: T;
+  children: React.ReactNode;
   className?: string;
+  wrap?: boolean;
   direction?: "horizontal" | "vertical";
-  ref?: React.Ref<HTMLUListElement>;
 }
 
-export const List: React.FC<ListProps>;
+export const List: <T extends "ul" | "ol">(
+  props: ListProps<T> & RefAttributes<HTMLElement>
+) => React.ReactElement | null;
 
 export default List;

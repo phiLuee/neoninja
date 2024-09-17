@@ -19,8 +19,8 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
     },
     ref
   ) {
-    const classNamesLiItem = clsx(className, "menu-item relative");
-    const classNamesActionItem = clsx("py-5 pt-0");
+    const classNamesLiItem = clsx("menu-item relative", className);
+    const classNamesActionItem = clsx("");
     const collapsibleRef = useRef<CollapsibleHandle>(null);
 
     const toggleCollapsible = useCallback(() => {
