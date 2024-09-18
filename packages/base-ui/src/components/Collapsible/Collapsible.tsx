@@ -1,9 +1,10 @@
-import {
+import React, {
   useRef,
   forwardRef,
   useImperativeHandle,
   useState,
   useCallback,
+  ElementType,
 } from "react";
 import clsx from "clsx";
 import "./Collapsible.scss";
@@ -44,38 +45,54 @@ import useCollapsibleLogic from "./useCollapsibleLogic";
  * @property {boolean} [inProp] - Initial state of the collapsible component, whether it is open or closed.
  * @property {string} [className] - Additional class names to apply to the root element.
  */
-export const Collapsible = forwardRef<CollapsibleHandle, CollapsibleProps>(
-  ({ children, as: Component = "div", inProp = false, className }, ref) => {
-    const [open, setOpen] = useState(inProp);
-    const contentRef = useRef<HTMLElement>(null);
+export const Collapsible = forwardRef<
+  CollapsibleHandle,
+  CollapsibleProps<ElementType>
+>(function Collapsible<T extends ElementType = "div">(
+  {
+    children,
+    as: Component = "div" as T,
+    inProp = false,
+    className,
+    ...rest
+  }: CollapsibleProps<T>,
+  ref: React.Ref<CollapsibleHandle>
+): React.ReactElement {
+  const [open, setOpen] = useState(inProp);
+  const contentRef = useRef<HTMLElement>(null);
 
-    const toggle = useCallback(() => {
-      setOpen((prevOpen) => !prevOpen);
-    }, []);
+  const toggle = useCallback(() => {
+    setOpen((prevOpen) => !prevOpen);
+  }, []);
 
-    useImperativeHandle(ref, () => ({
-      element: contentRef.current as HTMLElement,
-      toggle,
-      isOpen: open,
-    }));
+  useImperativeHandle(ref, () => ({
+    element: contentRef.current as HTMLElement,
+    toggle,
+    isOpen: open,
+  }));
 
-    const handleTransitionEndCallback = useCollapsibleLogic(
-      contentRef,
-      open,
-      setOpen
-    );
+  const handleTransitionEndCallback = useCollapsibleLogic(
+    contentRef,
+    open,
+    setOpen
+  );
 
-    return (
-      <Component ref={contentRef} className={clsx("collapsible", className)}>
-        <div
-          onTransitionEnd={handleTransitionEndCallback}
-          className="collapsible__container"
-        >
-          <div className="collapsible__content">{children}</div>
-        </div>
-      </Component>
-    );
-  }
-);
+  const ComponentType = Component as React.ElementType;
+
+  return (
+    <ComponentType
+      ref={contentRef}
+      className={clsx("collapsible", className)}
+      {...rest}
+    >
+      <div
+        onTransitionEnd={handleTransitionEndCallback}
+        className="collapsible__container"
+      >
+        <div className="collapsible__content">{children}</div>
+      </div>
+    </ComponentType>
+  );
+});
 
 export default Collapsible;

@@ -1,12 +1,15 @@
 import React from "react";
 
-export interface CollapsibleProps {
+interface CollapsiblePropsBase<T extends React.ElementType = "div"> {
   children: React.ReactNode;
-  as?: React.ElementType;
+  as?: T;
   inProp?: boolean;
-  onToggle?: (inProp: boolean) => void;
   className?: string;
 }
+
+export interface CollapsibleProps<T extends React.ElementType>
+  extends CollapsiblePropsBase<T>,
+    Omit<React.HTMLProps<T>, keyof CollapsiblePropsBase<T>> {}
 
 export type CollapsibleHandle = {
   element: HTMLElement;
@@ -14,7 +17,8 @@ export type CollapsibleHandle = {
   isOpen: boolean;
 };
 
-export const Collapsible: FC<
-  CollapsibleProps & RefAttributes<CollapsibleHandle>
->;
+export const Collapsible: <T extends React.ElementType = "div">(
+  props: CollapsibleProps<T> & React.RefAttributes<CollapsibleHandle>
+) => React.ReactElement;
+
 export default Collapsible;

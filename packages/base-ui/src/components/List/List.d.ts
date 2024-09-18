@@ -1,4 +1,5 @@
 import React from "react";
+
 export type ListType = "ul" | "ol";
 
 export interface ListProps<T extends ListType> {
@@ -7,15 +8,15 @@ export interface ListProps<T extends ListType> {
   className?: string;
   wrap?: boolean;
   direction?: "horizontal" | "vertical";
+  ref?: React.ForwardedRef<RefListType<T>>;
 }
 
 export type RefListType<T extends ListType> = T extends "ul"
-  ? HTMLUListElement
-  : HTMLOListElement;
+  ? React.HTMLUListElement
+  : React.HTMLOListElement;
 
 export const List: <T extends ListType = "ul">(
-  props: ListProps<T>,
-  ref: React.ForwardedRef<RefType<T>>
+  props: ListProps<T>
 ) => React.ReactElement;
 
 export default List;

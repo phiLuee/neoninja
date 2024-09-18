@@ -4,6 +4,7 @@ import {
   forwardRef,
   useImperativeHandle,
   useState,
+  useEffect,
 } from "react";
 import "./Navbar.scss";
 import { NavbarHandle, NavbarProps } from "./Navbar.d";
@@ -13,6 +14,41 @@ import clsx from "clsx";
 
 export const Navbar = forwardRef<NavbarHandle, NavbarProps>(
   ({ children, as: Component = "nav", className }, ref) => {
+    const [clicked, setClicked] = useState(false);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    const handleClick = () => {
+      setClicked(true);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+
+    const handleMouseLeave = () => {
+      if (clicked) {
+        timeoutRef.current = setTimeout(() => {
+          // Hier die gewünschte Aktion ausführen
+          submenuRef.current?.toggle();
+          setClicked(false);
+        }, 3000); // Verzögerung in Millisekunden
+      }
+    };
+
+    const handleMouseEnter = () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        setClicked(false);
+      }
+    };
+
+    useEffect(() => {
+      return () => {
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
+      };
+    }, []);
+
     const contentRef = useRef<HTMLElement>(null);
     const submenuRef = useRef<CollapsibleHandle>(null);
     const [subnavContent, setSubnavContent] = useState<React.ReactNode>(null);
@@ -42,6 +78,9 @@ export const Navbar = forwardRef<NavbarHandle, NavbarProps>(
         <Collapsible
           ref={submenuRef}
           className="bar-sub transition-all absolute duration-300 w-full"
+          onClick={handleClick}
+          onMouseLeave={handleMouseLeave}
+          onMouseEnter={handleMouseEnter}
         >
           <div className="max-w-screen-xl relative flex flex-wrap items-center justify-between mx-auto p-4">
             <button className="absolute top-4 right-4 " onClick={toggleMenu}>

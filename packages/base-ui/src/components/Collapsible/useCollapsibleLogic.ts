@@ -5,6 +5,7 @@ import { useCallback, useEffect, useLayoutEffect } from "react";
  *
  * @param contentRef - A reference to the HTML element containing the collapsible content.
  * @param open - A boolean indicating whether the collapsible content is open or closed. Defaults to `false`.
+ * @param setOpen - A method to set the open state of the collapsible content.
  * @returns A callback function to handle the transition end event.
  *
  * This hook sets the height of the collapsible container based on its scroll height when the component mounts or updates.
