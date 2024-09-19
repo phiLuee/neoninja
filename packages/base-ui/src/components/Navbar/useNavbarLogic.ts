@@ -1,11 +1,7 @@
 import { useCallback, useEffect, ForwardedRef } from "react";
 import { NavbarHandle } from "./Navbar.d";
-import { CollapsibleHandle } from "../Collapsible/Collapsible.d";
 
-export const useNavbarLogic = (
-  ref: ForwardedRef<NavbarHandle>,
-  submenuRef: React.RefObject<CollapsibleHandle>
-): void => {
+export const useNavbarLogic = (ref: ForwardedRef<NavbarHandle>): void => {
   //   const [isSubnavOpen, setIsSubnavOpen] = useState(false);
 
   const handleClickOutside = useCallback(
@@ -13,8 +9,8 @@ export const useNavbarLogic = (
       if (
         ref &&
         "current" in ref &&
-        ref.current &&
-        ref.current.isSubnavOpen &&
+        ref.current?.element &&
+        ref.current?.isSubnavOpen &&
         !ref.current.element.contains(event.target as Node)
       ) {
         console.log("handleClickOutside");
@@ -46,12 +42,12 @@ export const useNavbarLogic = (
   //   }, [ref, toggleMenu, isSubnavOpen]);
 
   // Synchronisieren Sie den Zustand des Submenus mit dem Zustand des Collapsibles
-  useEffect(() => {
-    if (submenuRef.current) {
-      submenuRef.current.setOpen;
-      //   setIsSubnavOpen(submenuRef.current.isOpen);
-    }
-  }, [submenuRef]);
+  //   useEffect(() => {
+  //     if (submenuRef.current) {
+  //       submenuRef.current.setOpen;
+  //       //   setIsSubnavOpen(submenuRef.current.isOpen);
+  //     }
+  //   }, [submenuRef]);
 };
 
 // const [clicked, setClicked] = useState(false);

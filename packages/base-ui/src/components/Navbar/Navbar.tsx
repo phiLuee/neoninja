@@ -1,10 +1,4 @@
-import {
-  useCallback,
-  useRef,
-  forwardRef,
-  useImperativeHandle,
-  useState,
-} from "react";
+import { useRef, forwardRef, useImperativeHandle, useState } from "react";
 import "./Navbar.scss";
 import { NavbarHandle, NavbarProps } from "./Navbar.d";
 import { Collapsible } from "../Collapsible";
@@ -17,11 +11,9 @@ export const Navbar = forwardRef<NavbarHandle, NavbarProps>(
     const contentRef = useRef<HTMLElement>(null);
     const submenuRef = useRef<CollapsibleHandle>(null);
     const [subnavContent, setSubnavContent] = useState<React.ReactNode>(null);
-
-    const toggleMenu = useCallback(() => {
-      console.log("toggle");
-      submenuRef.current?.toggle();
-    }, [submenuRef]);
+    const classNames = clsx(
+      "bar bg-white dark:bg-gray-900 sticky top-0 w-full z-10"
+    );
 
     useImperativeHandle(
       ref,
@@ -31,17 +23,14 @@ export const Navbar = forwardRef<NavbarHandle, NavbarProps>(
         get isSubnavOpen() {
           return submenuRef.current?.isOpen ?? false;
         },
-        toggle: toggleMenu,
+        toggle: () => {
+          submenuRef.current?.toggle();
+        },
       }),
-      [submenuRef, toggleMenu]
+      [submenuRef]
     );
 
-    // Typüberprüfung und Typumwandlung
-    useNavbarLogic(ref, submenuRef);
-
-    const classNames = clsx(
-      "bar bg-white dark:bg-gray-900 sticky top-0 w-full z-10"
-    );
+    useNavbarLogic(ref);
 
     return (
       <Component ref={contentRef} className={classNames}>
@@ -52,12 +41,14 @@ export const Navbar = forwardRef<NavbarHandle, NavbarProps>(
         <Collapsible
           ref={submenuRef}
           className="bar-sub transition-all absolute duration-300 w-full"
-          // onClick={handleClick}
-          // onMouseLeave={handleMouseLeave}
-          // onMouseEnter={handleMouseEnter}
         >
           <div className="max-w-screen-xl relative flex flex-wrap items-center justify-between mx-auto p-4">
-            <button className="absolute top-4 right-4 " onClick={toggleMenu}>
+            <button
+              className="absolute top-4 right-4 "
+              onClick={() => {
+                submenuRef.current?.setOpen(false);
+              }}
+            >
               <svg
                 className="h-6 w-6"
                 xmlns="http://www.w3.org/2000/svg"
