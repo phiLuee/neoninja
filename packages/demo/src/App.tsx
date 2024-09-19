@@ -67,15 +67,17 @@ const App: React.FC = () => {
 
   const componentsMenu = useCallback(() => {
     if (navbarRef.current) {
+      if (navbarRef.current.isSubnavOpen) navbarRef.current.toggle();
       navbarRef.current.setSubnavContent(subnavContentA);
-      if (!navbarRef.current.isSubnavOpen) navbarRef.current.toggle();
+      navbarRef.current.toggle();
     }
   }, [subnavContentA]);
 
   const otherMenu = useCallback(() => {
     if (navbarRef.current) {
+      if (navbarRef.current.isSubnavOpen) navbarRef.current.toggle();
       navbarRef.current.setSubnavContent(subnavContentB);
-      if (!navbarRef.current.isSubnavOpen) navbarRef.current.toggle();
+      navbarRef.current.toggle();
     }
   }, [subnavContentB]);
 

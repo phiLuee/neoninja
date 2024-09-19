@@ -3,7 +3,7 @@ import React from "react";
 interface CollapsiblePropsBase<T extends React.ElementType = "div"> {
   children: React.ReactNode;
   as?: T;
-  inProp?: boolean;
+  open?: boolean;
   className?: string;
 }
 
@@ -13,8 +13,9 @@ export interface CollapsibleProps<T extends React.ElementType>
 
 export type CollapsibleHandle = {
   element: HTMLElement;
-  toggle: () => void;
   isOpen: boolean;
+  setOpen: (boolean) => void;
+  toggle: () => void;
 };
 
 export const Collapsible: <T extends React.ElementType = "div">(

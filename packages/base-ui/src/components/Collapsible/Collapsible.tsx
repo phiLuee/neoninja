@@ -52,13 +52,13 @@ export const Collapsible = forwardRef<
   {
     children,
     as: Component = "div" as T,
-    inProp = false,
+    open = false,
     className,
     ...rest
   }: CollapsibleProps<T>,
   ref: React.Ref<CollapsibleHandle>
 ): React.ReactElement {
-  const [open, setOpen] = useState(inProp);
+  const [isOpen, setOpen] = useState(open);
   const contentRef = useRef<HTMLElement>(null);
 
   const toggle = useCallback(() => {
@@ -67,15 +67,12 @@ export const Collapsible = forwardRef<
 
   useImperativeHandle(ref, () => ({
     element: contentRef.current as HTMLElement,
+    isOpen,
+    setOpen,
     toggle,
-    isOpen: open,
   }));
 
-  const handleTransitionEndCallback = useCollapsibleLogic(
-    contentRef,
-    open,
-    setOpen
-  );
+  const handleTransitionEndCallback = useCollapsibleLogic(contentRef, isOpen);
 
   const ComponentType = Component as React.ElementType;
 
