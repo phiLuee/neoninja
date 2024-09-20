@@ -30,7 +30,7 @@ export const Navbar = forwardRef<NavbarHandle, NavbarProps>(
       [submenuRef]
     );
 
-    useNavbarLogic(ref);
+    useNavbarLogic(ref as React.RefObject<NavbarHandle>);
 
     return (
       <Component ref={contentRef} className={classNames}>

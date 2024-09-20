@@ -1,19 +1,15 @@
-import { useCallback, useEffect, ForwardedRef } from "react";
+import { RefObject, useCallback, useEffect } from "react";
 import { NavbarHandle } from "./Navbar.d";
 
-export const useNavbarLogic = (ref: ForwardedRef<NavbarHandle>): void => {
-  //   const [isSubnavOpen, setIsSubnavOpen] = useState(false);
-
+export const useNavbarLogic = (ref: RefObject<NavbarHandle>): void => {
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
       if (
-        ref &&
-        "current" in ref &&
         ref.current?.element &&
         ref.current?.isSubnavOpen &&
         !ref.current.element.contains(event.target as Node)
       ) {
-        console.log("handleClickOutside");
+        console.log(ref.current);
         ref.current.toggle();
       }
     },
@@ -21,33 +17,13 @@ export const useNavbarLogic = (ref: ForwardedRef<NavbarHandle>): void => {
   );
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [handleClickOutside]);
-
-  //   const toggleMenu = useCallback(() => {
-  //     if (submenuRef.current) {
-  //       submenuRef.current.toggle();
-  //       setIsSubnavOpen(submenuRef.current.isOpen);
-  //     }
-  //   }, [submenuRef]);
-
-  //   useEffect(() => {
-  //     if (ref && typeof ref !== "function" && ref.current) {
-  //       ref.current.toggle = toggleMenu;
-  //       ref.current.isSubnavOpen = isSubnavOpen;
-  //     }
-  //   }, [ref, toggleMenu, isSubnavOpen]);
-
-  // Synchronisieren Sie den Zustand des Submenus mit dem Zustand des Collapsibles
-  //   useEffect(() => {
-  //     if (submenuRef.current) {
-  //       submenuRef.current.setOpen;
-  //       //   setIsSubnavOpen(submenuRef.current.isOpen);
-  //     }
-  //   }, [submenuRef]);
+    if (ref.current?.isSubnavOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }
+  }, [handleClickOutside, ref, ref.current?.isSubnavOpen]);
 };
 
 // const [clicked, setClicked] = useState(false);

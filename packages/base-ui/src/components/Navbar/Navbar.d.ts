@@ -6,12 +6,19 @@ export interface NavbarProps {
   className?: string;
 }
 
-export type NavbarHandle = {
+export interface NavbarHandle {
   element: HTMLElement;
   setSubnavContent: (content: React.ReactNode) => void;
   isSubnavOpen: boolean;
   toggle: () => void;
-};
+}
+
+// export type NavbarHandle = {
+//   element: HTMLElement;
+//   setSubnavContent: (content: React.ReactNode) => void;
+//   isSubnavOpen: boolean;
+//   toggle: () => void;
+// };
 
 export const Navbar: FC<NavbarProps & React.RefAttributes<NavbarHandle>>;
 export default Navbar;
