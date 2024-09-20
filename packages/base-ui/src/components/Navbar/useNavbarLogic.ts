@@ -19,44 +19,10 @@ export const useNavbarLogic = (ref: RefObject<NavbarHandle>): void => {
   useEffect(() => {
     if (ref.current?.isSubnavOpen) {
       document.addEventListener("mousedown", handleClickOutside);
+
       return () => {
         document.removeEventListener("mousedown", handleClickOutside);
       };
     }
   }, [handleClickOutside, ref, ref.current?.isSubnavOpen]);
 };
-
-// const [clicked, setClicked] = useState(false);
-// const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-// const handleClick = () => {
-//   setClicked(true);
-//   if (timeoutRef.current) {
-//     clearTimeout(timeoutRef.current);
-//   }
-// };
-
-// const handleMouseLeave = () => {
-//   if (clicked) {
-//     timeoutRef.current = setTimeout(() => {
-//       // Hier die gewünschte Aktion ausführen
-//       submenuRef.current?.toggle();
-//       setClicked(false);
-//     }, 3000); // Verzögerung in Millisekunden
-//   }
-// };
-
-// const handleMouseEnter = () => {
-//   if (timeoutRef.current) {
-//     clearTimeout(timeoutRef.current);
-//     setClicked(false);
-//   }
-// };
-
-// useEffect(() => {
-//   return () => {
-//     if (timeoutRef.current) {
-//       clearTimeout(timeoutRef.current);
-//     }
-//   };
-// }, []);
