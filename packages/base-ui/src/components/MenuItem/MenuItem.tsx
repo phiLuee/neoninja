@@ -1,4 +1,4 @@
-import { forwardRef, useCallback, useRef } from "react";
+import { forwardRef, useCallback, useContext, useMemo, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "./MenuItem.scss";
 import { MenuItemProps } from "./MenuItem.d";
@@ -6,6 +6,7 @@ import { Collapsible } from "../Collapsible/Collapsible";
 import { ListItem } from "../ListItem";
 import clsx from "clsx";
 import { CollapsibleHandle } from "../Collapsible/Collapsible.d";
+import ListContext from "../List/ListContext";
 
 export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
   function MenuItem(
@@ -27,31 +28,41 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
       collapsibleRef.current?.toggle();
     }, []);
 
+    const context = useContext(ListContext);
+    const childContext = useMemo(
+      () => ({
+        ...context,
+      }),
+      [context]
+    );
+
     return (
-      <ListItem ref={ref} className={classNamesLiItem} {...listItemProps}>
-        {!children ? (
-          <NavLink className={classNamesActionItem} to={to}>
-            {label}
-          </NavLink>
-        ) : (
-          <>
-            <button
-              className={classNamesActionItem}
-              onClick={toggleCollapsible}
-            >
+      <ListContext.Provider value={childContext}>
+        <ListItem ref={ref} className={classNamesLiItem} {...listItemProps}>
+          {!children ? (
+            <NavLink className={classNamesActionItem} to={to}>
               {label}
-            </button>
-            <Collapsible
-              ref={collapsibleRef}
-              className={clsx(
-                subFixed ? "fixed z-20 w-auto bg-white dark:bg-gray-900" : ""
-              )}
-            >
-              {children}
-            </Collapsible>
-          </>
-        )}
-      </ListItem>
+            </NavLink>
+          ) : (
+            <>
+              <button
+                className={classNamesActionItem}
+                onClick={toggleCollapsible}
+              >
+                {label}
+              </button>
+              <Collapsible
+                ref={collapsibleRef}
+                className={clsx(
+                  subFixed ? "fixed z-20 w-auto bg-white dark:bg-gray-900" : ""
+                )}
+              >
+                {children}
+              </Collapsible>
+            </>
+          )}
+        </ListItem>
+      </ListContext.Provider>
     );
   }
 );

@@ -1,4 +1,4 @@
-import { Button, Card } from "base-ui";
+import { Button, Card, ButtonBase } from "base-ui";
 import Lamp from "../components/Lamp";
 
 function Buttons(): React.ReactElement {
@@ -8,6 +8,10 @@ function Buttons(): React.ReactElement {
     <>
       <div>
         <h1>Buttons</h1>
+        <div>
+          <ButtonBase>ButtonBase</ButtonBase> <br></br>
+          <ButtonBase to="/">ButtonBase to</ButtonBase>
+        </div>
         <div style={buttonContainerStyle}>
           <Button
             size="xsmall"
