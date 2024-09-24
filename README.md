@@ -2,27 +2,21 @@
 
 This UI framework provides a minimal setup of react components for personal use
 
-## Development
+## Development & Refactor
 
 - ButtonBase
-
-## Refactor
-
 - Button
 - ListItem
 - MenuListItem
 - Navbar
-
-## First Final
-
 - Collapsible
 - Offcanvas
 - List
 - MenuList
-
-## Future
-
 - Container
 - Card
 - Modal
+
+## Future
+
 - (Grid)
