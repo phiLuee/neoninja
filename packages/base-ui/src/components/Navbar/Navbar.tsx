@@ -5,7 +5,6 @@ import { Collapsible } from "../Collapsible";
 import { CollapsibleHandle } from "../Collapsible/Collapsible.d";
 import clsx from "clsx";
 import { useNavbarLogic } from "./useNavbarLogic";
-import { Button } from "../Button";
 
 export const Navbar = forwardRef<NavbarHandle, NavbarProps>(
   ({ children, as: Component = "nav" }, ref) => {
@@ -43,7 +42,6 @@ export const Navbar = forwardRef<NavbarHandle, NavbarProps>(
           ref={submenuRef}
           className="bar-sub transition-all absolute duration-300 w-full"
         >
-          <Button as="RouterLink">as</Button>
           <div className="max-w-screen-xl relative flex flex-wrap items-center justify-between mx-auto p-4">
             <button
               className="absolute top-4 right-4 "

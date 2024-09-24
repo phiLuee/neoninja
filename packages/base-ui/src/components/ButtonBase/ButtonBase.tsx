@@ -37,6 +37,7 @@ export const ButtonBase = forwardRef<HTMLElement, ButtonBaseProps<ElementType>>(
         className={classes}
         ref={ref}
         {...buttonProps}
+        {...other}
       >
         {children}
       </ButtonBaseRoot>

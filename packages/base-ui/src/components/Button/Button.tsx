@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
 import "./Button.scss";
-import { ButtonProps } from "./Button.d";
 import { ButtonBase } from "../ButtonBase/ButtonBase";
+import { ButtonProps } from "./Button.d";
 
 export const Button = forwardRef<HTMLElement, ButtonProps>(
   (
@@ -41,8 +41,6 @@ export const Button = forwardRef<HTMLElement, ButtonProps>(
       theme ? glassStyle.glass : {},
       "button-no-flex"
     );
-
-    console.log(other);
 
     return (
       <ButtonBase

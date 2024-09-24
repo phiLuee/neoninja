@@ -1,4 +1,5 @@
 import { forwardRef, useCallback, useContext, useMemo, useRef } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import "./MenuItem.scss";
 import { MenuItemProps } from "./MenuItem.d";
 import { Collapsible } from "../Collapsible/Collapsible";
@@ -40,7 +41,11 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
       <ListContext.Provider value={childContext}>
         <ListItem ref={ref} className={classNamesLiItem} {...listItemProps}>
           {!children ? (
-            <ButtonBase className={classNamesActionItem} to={to}>
+            <ButtonBase
+              as={RouterLink}
+              className={classNamesActionItem}
+              to={to}
+            >
               {label}
             </ButtonBase>
           ) : (
