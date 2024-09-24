@@ -1,6 +1,6 @@
 import { ElementType } from "react";
 
-export interface ButtonBaseProps<T extends ElementType = "button"> {
+export interface ButtonBaseProps<T extends ElementType> {
   as?: T;
   onClick?: () => void;
   children?: ReactNode;
@@ -10,7 +10,6 @@ export interface ButtonBaseProps<T extends ElementType = "button"> {
   to?: string;
   href?: string;
   type?: "button" | "reset" | "submit";
-  [key: string]: unknown;
 }
 export const ButtonBase: React.FC<ButtonBaseProps>;
 export default ButtonBase;

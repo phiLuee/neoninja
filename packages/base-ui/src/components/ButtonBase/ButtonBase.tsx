@@ -4,17 +4,17 @@ import "./ButtonBase.scss";
 import { ButtonBaseProps } from "./ButtonBase.d";
 
 export const ButtonBase = forwardRef<HTMLElement, ButtonBaseProps<ElementType>>(
-  <T extends ElementType = "button">(
+  (
     {
-      as: Component = "button" as T,
+      as: Component = "button",
       onClick,
       children,
       disabled = false,
       LinkComponent = "a",
       type = "button",
       ...other
-    }: ButtonBaseProps<T>,
-    ref: React.Ref<HTMLElement>
+    }: ButtonBaseProps<ElementType>,
+    ref
   ) => {
     const baseStyles = "button dark:text-white ";
     const isLink = other.href || other.to;

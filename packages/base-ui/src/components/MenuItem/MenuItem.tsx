@@ -1,10 +1,10 @@
 import { forwardRef, useCallback, useContext, useMemo, useRef } from "react";
-import { NavLink } from "react-router-dom";
 import "./MenuItem.scss";
 import { MenuItemProps } from "./MenuItem.d";
 import { Collapsible } from "../Collapsible/Collapsible";
 import { ListItem } from "../ListItem";
 import clsx from "clsx";
+import { ButtonBase } from "../ButtonBase";
 import { CollapsibleHandle } from "../Collapsible/Collapsible.d";
 import ListContext from "../List/ListContext";
 
@@ -40,17 +40,17 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
       <ListContext.Provider value={childContext}>
         <ListItem ref={ref} className={classNamesLiItem} {...listItemProps}>
           {!children ? (
-            <NavLink className={classNamesActionItem} to={to}>
+            <ButtonBase className={classNamesActionItem} to={to}>
               {label}
-            </NavLink>
+            </ButtonBase>
           ) : (
             <>
-              <button
+              <ButtonBase
                 className={classNamesActionItem}
                 onClick={toggleCollapsible}
               >
                 {label}
-              </button>
+              </ButtonBase>
               <Collapsible
                 ref={collapsibleRef}
                 className={clsx(

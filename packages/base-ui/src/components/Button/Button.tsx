@@ -2,8 +2,9 @@ import { forwardRef } from "react";
 import clsx from "clsx";
 import "./Button.scss";
 import { ButtonProps } from "./Button.d";
+import { ButtonBase } from "../ButtonBase/ButtonBase";
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLElement, ButtonProps>(
   (
     {
       variant = "primary",
@@ -12,6 +13,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       onClick,
       children,
       disabled = false,
+      ...other
     },
     ref
   ) => {
@@ -39,15 +41,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       theme ? glassStyle.glass : {},
       "button-no-flex"
     );
+
+    console.log(other);
+
     return (
-      <button
+      <ButtonBase
         ref={ref}
         className={classes}
         onClick={onClick}
         disabled={disabled}
+        {...other}
       >
         {children}
-      </button>
+      </ButtonBase>
     );
   }
 );
