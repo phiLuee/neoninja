@@ -1,0 +1,32 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+  --font-color: var(--color-gray-800);
+}
+
+.light {
+  --primary: 255, 255, 255;
+  --secondary: 0, 0, 0;
+  --neon-01: 234, 17, 54;
+  --neon-02: 211, 22, 140;
+  --neon-03: 166, 24, 209;
+  --neon-04: 118, 5, 224;
+  --neon-05: 18, 16, 217;
+}
+
+body * {
+  color: var(--font-color); /* Anwenden der Schriftfarbe auf alle Elemente */
+}
+
+body.dark * {
+  --font-color: var(--color-gray-300);
+  --primary: 0, 0, 0;
+  --secondary: 255, 255, 255;
+}
+
+.red {
+  --primary: 255, 0, 0;
+  --secondary: 125, 25, 25;
+}
