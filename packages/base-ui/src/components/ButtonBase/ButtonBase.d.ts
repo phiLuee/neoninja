@@ -1,6 +1,6 @@
 import { ElementType } from "react";
 
-export interface ButtonBaseProps<T extends ElementType> {
+export interface ButtonBaseProps<T extends ElementType = "button"> {
   as?: T;
   onClick?: () => void;
   children?: ReactNode;

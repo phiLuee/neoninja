@@ -89,11 +89,6 @@ const App: React.FC = () => {
     <>
       <Navbar ref={navbarRef}>
         <a href="/" className="flex items-center">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="m-1"
-            alt="Logo"
-          />
           <span className="text-black dark:text-white">NeoNinja</span>
         </a>
 
