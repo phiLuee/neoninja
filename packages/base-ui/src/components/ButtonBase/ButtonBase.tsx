@@ -16,7 +16,7 @@ export const ButtonBase = forwardRef<HTMLElement, ButtonBaseProps<ElementType>>(
     }: ButtonBaseProps<ElementType>,
     ref
   ) => {
-    const baseStyles = "button dark:text-white ";
+    const baseStyles = "dark:text-white dark:hover:text-blue-500 duration-300";
     const isLink = other.href || other.to;
     const buttonProps: { type?: string; disabled?: boolean } = {};
 
@@ -30,7 +30,7 @@ export const ButtonBase = forwardRef<HTMLElement, ButtonBaseProps<ElementType>>(
       }
     }
 
-    const classes = clsx(baseStyles, "button-no-flex");
+    const classes = clsx(baseStyles);
     return (
       <ButtonBaseRoot
         onClick={onClick}

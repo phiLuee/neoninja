@@ -1,4 +1,4 @@
-import { ElementType } from "react";
+import { ReactNode, ElementType } from "react";
 
 export interface ButtonBaseProps<T extends ElementType = "button"> {
   as?: T;

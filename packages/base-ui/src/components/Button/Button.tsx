@@ -18,7 +18,7 @@ export const Button = forwardRef<HTMLElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      "button dark:text-white shadow-lg hover:shadow-xl transition-shadow duration-300 p-2 ";
+      "button shadow-lg hover:shadow-xl transition-shadow duration-300 p-2 ";
     const variantStyles = {
       primary: "button-primary",
       secondary: "button-secondary",
