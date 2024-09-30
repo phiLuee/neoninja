@@ -6,6 +6,7 @@ export * from "./Offcanvas";
 export * from "./Collapsible";
 export * from "./List";
 export * from "./ListItem";
+export * from "./ListItemButton";
 export * from "./MenuList";
 export * from "./MenuItem";
 export * from "./Modal";
