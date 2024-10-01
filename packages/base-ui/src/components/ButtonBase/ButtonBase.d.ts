@@ -1,15 +1,17 @@
 import { ReactNode, ElementType } from "react";
+import { ExtendedProps, ExtendableComponentType } from "../../types/types.d";
 
-export interface ButtonBaseProps<T extends ElementType = "button"> {
-  as?: T;
+export type ButtonBaseProps<T extends ExtendableComponentType = "button"> = {
   onClick?: () => void;
   children?: ReactNode;
   disabled?: boolean;
   className?: string;
   LinkComponent?: ElementType;
-  to?: string;
   href?: string;
   type?: "button" | "reset" | "submit";
-}
-export const ButtonBase: React.FC<ButtonBaseProps>;
+} & ExtendedProps<T>;
+
+export const ButtonBase: <Tag extends ExtendableComponentType = "button">(
+  props: ButtonBaseProps<Tag>
+) => JSX.Element;
 export default ButtonBase;

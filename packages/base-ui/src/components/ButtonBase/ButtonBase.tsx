@@ -2,6 +2,7 @@ import { ElementType, forwardRef } from "react";
 import clsx from "clsx";
 import "./ButtonBase.scss";
 import { ButtonBaseProps } from "./ButtonBase.d";
+import { ExtendableComponentType } from "../../types/types";
 
 export const ButtonBase = forwardRef<HTMLElement, ButtonBaseProps<ElementType>>(
   (
@@ -43,6 +44,8 @@ export const ButtonBase = forwardRef<HTMLElement, ButtonBaseProps<ElementType>>(
       </ButtonBaseRoot>
     );
   }
-);
+) as <Tag extends ExtendableComponentType = "button">(
+  props: ButtonBaseProps<Tag>
+) => JSX.Element;
 
 export default ButtonBase;
