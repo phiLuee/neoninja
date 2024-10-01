@@ -2,7 +2,7 @@ import { ElementType, forwardRef } from "react";
 import clsx from "clsx";
 import "./ButtonBase.scss";
 import { ButtonBaseProps } from "./ButtonBase.d";
-import { ExtendableComponentType } from "../../types/types";
+import { ExtendableComponentType } from "../../types/types.d";
 
 export const ButtonBase = forwardRef<HTMLElement, ButtonBaseProps<ElementType>>(
   (

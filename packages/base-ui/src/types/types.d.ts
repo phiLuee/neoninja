@@ -15,7 +15,9 @@ type ComponentProps<T extends ExtendableComponentType> =
       : never;
 
 // Define a type to validate props by omitting the 'as' prop
-export type ExtendedProps<Tag extends ExtendableComponentType> =
-  ComponentProps<Tag> & {
-    as?: Tag; // Include 'as' prop in validated props
-  };
+export type ExtendedProps<T extends ExtendableComponentType> = Omit<
+  ComponentProps<T>,
+  "as"
+> & {
+  as?: T; // Include 'as' prop
+};
