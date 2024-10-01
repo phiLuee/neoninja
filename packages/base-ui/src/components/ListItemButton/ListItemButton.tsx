@@ -4,13 +4,14 @@ import { ListItemButtonProps } from "./ListItemButton.d";
 import clsx from "clsx";
 import ListContext from "../List/ListContext";
 import { ButtonBase } from "../ButtonBase";
+import { ExtendableComponentType } from "../../types/types";
 
 export const ListItemButton = forwardRef<
-  HTMLLIElement,
+  HTMLElement,
   ListItemButtonProps<ElementType>
 >(function ListItemButton(
   {
-    as = "div",
+    as = "button",
     children,
     className,
     alignItems = "center",
@@ -50,6 +51,8 @@ export const ListItemButton = forwardRef<
       </ButtonBase>
     </ListContext.Provider>
   );
-});
+}) as <Tag extends ExtendableComponentType>(
+  props: ListItemButtonProps<Tag>
+) => JSX.Element;
 
 export default ListItemButton;

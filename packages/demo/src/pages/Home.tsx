@@ -1,7 +1,8 @@
+import { List, ListItem, ButtonBase, ListItemButton } from "base-ui";
 import Container from "../components/Container/Container";
 import Ninja from "../components/Ninja";
 import React from "react";
-
+import { Link } from "react-router-dom";
 function Home(): React.ReactElement {
   return (
     <>
@@ -9,6 +10,20 @@ function Home(): React.ReactElement {
         <Container className="flex-1 ">
           <h1>Neoninja UI</h1>
           <Ninja></Ninja>
+          <List>
+            <ListItem>
+              <ListItemButton as={Link} to="/">
+                A
+              </ListItemButton>
+            </ListItem>
+            <ListItem>
+              <ListItemButton href="/">B</ListItemButton>
+            </ListItem>
+            <ListItem>
+              <ListItemButton>C</ListItemButton>
+            </ListItem>
+            <ListItem></ListItem>
+          </List>
         </Container>
         <Container className="flex-1 ">
           <p>

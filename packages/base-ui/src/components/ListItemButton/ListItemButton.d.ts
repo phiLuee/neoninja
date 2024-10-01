@@ -1,18 +1,15 @@
-import React, { ElementType } from "react";
-import { ButtonBaseProps } from "../ButtonBase/ButtonBase.d";
+import React from "react";
+import { ExtendedProps, ExtendableComponentType } from "../../types/types.d";
 
-export interface ListItemButtonProps<T extends ElementType>
-  extends ButtonBaseProps<T> {
+export type ListItemButtonProps<T extends ExtendableComponentType> = {
   alignItems?: "center";
   href?: string;
-  to?: string;
-  as?: T;
   children?: React.ReactNode;
   className?: string;
-}
+} & ExtendedProps<T>;
 
-export const ListItemButton: React.FC<
-  ListItemButtonProps & React.RefAttributes<HTMLElement>
->;
+export const ListItemButton: <T extends ExtendableComponentType = "button">(
+  props: ListItemButtonProps<T>
+) => JSX.Element;
 
 export default ListItemButton;

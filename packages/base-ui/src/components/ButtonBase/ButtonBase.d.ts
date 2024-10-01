@@ -11,7 +11,7 @@ export type ButtonBaseProps<T extends ExtendableComponentType = "button"> = {
   type?: "button" | "reset" | "submit";
 } & ExtendedProps<T>;
 
-export const ButtonBase: <Tag extends ExtendableComponentType = "button">(
-  props: ButtonBaseProps<Tag>
+export const ButtonBase: <T extends ExtendableComponentType = "button">(
+  props: ButtonBaseProps<T>
 ) => JSX.Element;
 export default ButtonBase;

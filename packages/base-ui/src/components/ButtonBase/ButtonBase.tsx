@@ -14,7 +14,7 @@ export const ButtonBase = forwardRef<HTMLElement, ButtonBaseProps<ElementType>>(
       LinkComponent = "a",
       type = "button",
       ...other
-    }: ButtonBaseProps<ElementType>,
+    }: ButtonBaseProps<ExtendableComponentType>,
     ref
   ) => {
     const baseStyles = "dark:text-white dark:hover:text-blue-500 duration-300";
