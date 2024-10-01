@@ -4,7 +4,10 @@ import "./ButtonBase.scss";
 import { ButtonBaseProps } from "./ButtonBase.d";
 import { ExtendableComponentType } from "../../types/types.d";
 
-export const ButtonBase = forwardRef<HTMLElement, ButtonBaseProps<ElementType>>(
+export const ButtonBase = forwardRef<
+  HTMLElement,
+  ButtonBaseProps<ExtendableComponentType>
+>(
   (
     {
       as: Component = "button",
@@ -13,11 +16,12 @@ export const ButtonBase = forwardRef<HTMLElement, ButtonBaseProps<ElementType>>(
       disabled = false,
       LinkComponent = "a",
       type = "button",
+      className,
       ...other
     }: ButtonBaseProps<ExtendableComponentType>,
     ref
   ) => {
-    const baseStyles = "dark:text-white dark:hover:text-blue-500 duration-300";
+    const baseStyles = "dark:text-white dark:hover:text-blue-500 duration-200";
     const isLink = other.href || other.to;
     const buttonProps: { type?: string; disabled?: boolean } = {};
 
@@ -31,7 +35,8 @@ export const ButtonBase = forwardRef<HTMLElement, ButtonBaseProps<ElementType>>(
       }
     }
 
-    const classes = clsx(baseStyles);
+    const classes = clsx(className, baseStyles);
+
     return (
       <ButtonBaseRoot
         onClick={onClick}
