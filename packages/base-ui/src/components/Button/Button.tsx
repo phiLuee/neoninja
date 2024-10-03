@@ -13,6 +13,7 @@ export const Button = forwardRef<HTMLElement, ButtonProps>(
       onClick,
       children,
       disabled = false,
+      className,
       ...other
     },
     ref
@@ -35,6 +36,7 @@ export const Button = forwardRef<HTMLElement, ButtonProps>(
     };
 
     const classes = clsx(
+      className,
       baseStyles,
       variantStyles[variant],
       sizeStyles[size],
