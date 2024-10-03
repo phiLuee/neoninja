@@ -4,12 +4,11 @@ This UI framework provides a minimal setup of react components for personal use
 
 ## Development
 
-- ButtonBase
+- ListItemIcon
 
 ## Refactor
 
-- Button
-- ListItem
+- MenuList
 - MenuListItem
 - Navbar
 
@@ -18,7 +17,10 @@ This UI framework provides a minimal setup of react components for personal use
 - Collapsible
 - Offcanvas
 - List
-- MenuList
+- ListItem
+- ListItemButton
+- Button
+- ButtonBase
 
 ## Future
 
