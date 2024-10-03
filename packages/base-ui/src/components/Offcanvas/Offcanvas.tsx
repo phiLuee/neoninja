@@ -4,9 +4,12 @@ import "./Offcanvas.scss";
 import clsx from "clsx";
 
 export const Offcanvas = forwardRef<HTMLDivElement, OffcanvasProps>(
-  ({ children, placement = "right", show = false, type = "fixed" }, ref) => {
+  (
+    { children, className, placement = "right", show = false, type = "fixed" },
+    ref
+  ) => {
     const baseStyles =
-      "offcanvas backdrop-blur-lg z-10 p-4 overflow-y-auto transition-transform bg-white/30 w-80 dark:bg-gray-800/30";
+      "offcanvas backdrop-blur-lg z-10 overflow-y-auto transition-transform bg-white/30 w-80 dark:bg-gray-800/30";
 
     const placementStyles = {
       top: "transform -translate-y-full right-0 top-0 left-0 w-screen",
@@ -23,10 +26,12 @@ export const Offcanvas = forwardRef<HTMLDivElement, OffcanvasProps>(
     const visibilityStyles = show ? "transform-none" : "";
 
     const classes = clsx(
-      baseStyles,
+      className,
+
       placementStyles[placement],
       visibilityStyles,
-      typeClasses[type]
+      typeClasses[type],
+      baseStyles
     );
 
     return (

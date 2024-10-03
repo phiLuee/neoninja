@@ -29,10 +29,8 @@ export const ListItemButton = forwardRef<
   //   [alignItems, context.direction]
   // );
 
-  console.log((children ? children : "") + ": " + as);
-
   const classes = clsx(
-    "list-item-button hover:bg-gray-100/25 p-2 w-full",
+    "list-item-button hover:bg-gray-100/25 w-full p-2",
     className,
     context.direction === "horizontal",
     alignItems === "center" ? "flex items-center" : "flex items-start"
