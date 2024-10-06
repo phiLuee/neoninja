@@ -6,7 +6,11 @@ const Menu: React.FC = () => {
   return (
     <>
       <MenuList>
-        <MenuItem className="p-2" to="/" label="Home" />
+        <ListItem className="p-2">
+          <ListItemButton as={Link} to="/">
+            Home
+          </ListItemButton>
+        </ListItem>
         <MenuItem className="p-2" label="Components">
           <MenuList>
             <ListItem>
@@ -31,7 +35,11 @@ const Menu: React.FC = () => {
             </ListItem>
           </MenuList>
         </MenuItem>
-        <MenuItem className="p-2" to="/about" label="About" />
+        <ListItem className="p-2">
+          <ListItemButton as={Link} to="/about">
+            About
+          </ListItemButton>
+        </ListItem>
       </MenuList>
       <Ninja></Ninja>
     </>
