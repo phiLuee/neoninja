@@ -1,0 +1,37 @@
+.list-item-icon {
+  width: 32px; /* Standardbreite des Icons */
+  height: 32px; /* Standardhöhe des Icons */
+  object-fit: none; /* Verhindert das Skalieren des Bildes */
+  object-position: -64px -32px; /* Standardposition des Icons im Sprite */
+
+  &.icon1 {
+    object-position: -64px -32px; /* Position des ersten Icons im Sprite */
+  }
+
+  &.icon2 {
+    object-position: -96px -32px; /* Position des zweiten Icons im Sprite */
+  }
+
+  &.icon3 {
+    object-position: -128px -32px; /* Position des dritten Icons im Sprite */
+  }
+
+  /* Skalierung der Icons */
+  &.icon-small {
+    width: 16px; /* Kleine Breite des Icons */
+    height: 16px; /* Kleine Höhe des Icons */
+    object-position: -32px -16px; /* Angepasste Position für die Skalierung */
+  }
+
+  &.icon-medium {
+    width: 32px; /* Mittlere Breite des Icons */
+    height: 32px; /* Mittlere Höhe des Icons */
+    object-position: -64px -32px; /* Originalposition des Icons */
+  }
+
+  &.icon-large {
+    width: 64px; /* Große Breite des Icons */
+    height: 64px; /* Große Höhe des Icons */
+    object-position: -128px -64px; /* Angepasste Position für die Skalierung */
+  }
+}
