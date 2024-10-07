@@ -1,4 +1,4 @@
-import { List, ListItem, ListItemButton, ListItemIcon } from "base-ui";
+import { List, ListItem, ListItemButton, Icon } from "base-ui";
 import Container from "../components/Container/Container";
 
 function Lists(): React.ReactElement {
@@ -55,7 +55,7 @@ function Lists(): React.ReactElement {
               </ListItem>
               <ListItem>
                 <ListItemButton>
-                  <ListItemIcon></ListItemIcon>Item 7
+                  <Icon className="pr-2"></Icon>Item 7
                 </ListItemButton>
               </ListItem>
               <ListItem>
