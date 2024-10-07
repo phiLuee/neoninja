@@ -7,7 +7,7 @@ export * from "./Collapsible";
 export * from "./List";
 export * from "./ListItem";
 export * from "./ListItemButton";
-export * from "./ListItemIcon";
+export * from "./Icon";
 export * from "./MenuList";
 export * from "./MenuItem";
 export * from "./Modal";
